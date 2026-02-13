@@ -222,15 +222,20 @@ export default function App() {
         </div>
       )}
       <header className="header">
-        <h1>Tech Trends – Startup Landscape</h1>
+        <div className="header-brand">
+          <h1 className="header-title">Tech Trends</h1>
+          <p className="header-subtitle">
+            {filteredStartups.length.toLocaleString()} startups • {new Set(filteredStartups.map((s) => s.category_id)).size} categories
+          </p>
+        </div>
         <div className="header-actions">
-          <button type="button" onClick={() => setUploadOpen(true)}>
+          <button type="button" className="btn btn-primary" onClick={() => setUploadOpen(true)}>
             Upload Custom Data
           </button>
-          <button type="button" onClick={loadDemo}>
+          <button type="button" className="btn btn-secondary" onClick={loadDemo}>
             Reset to Demo Data
           </button>
-          <button type="button" onClick={handleFitToView}>
+          <button type="button" className="btn btn-secondary" onClick={handleFitToView}>
             Fit to View
           </button>
         </div>
@@ -260,7 +265,16 @@ export default function App() {
             />
           )}
           {filteredStartups.length === 0 && (
-            <div className="empty-state">No startups match the current filters.</div>
+            <div className="empty-state">
+              No startups match current filters.
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setFilter(buildInitialFilter(startups))}
+              >
+                Reset Filters
+              </button>
+            </div>
           )}
         </div>
       </div>

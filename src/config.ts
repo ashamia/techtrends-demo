@@ -1,7 +1,7 @@
 export const HULL_EXPANSION = 1.15
 export const LABEL_ZOOM_THRESHOLD = 0.8
 export const DOT_RADIUS = 4
-export const DOT_RADIUS_HOVER = 5
+export const DOT_RADIUS_HOVER = 6
 export const MAX_STARTUPS = 2000
 export const PADDING_PERCENT = 0.1
 export const MIN_ZOOM = 0.5

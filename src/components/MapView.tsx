@@ -78,16 +78,21 @@ export function MapView({
       for (const s of startups) {
         const isUncategorized = s.category_name === 'Uncategorized'
         const color = isUncategorized ? '#888' : (colorScale.get(s.category_id) ?? '#999')
+        ctx.globalAlpha = 0.85
         ctx.fillStyle = color
-        ctx.strokeStyle = isUncategorized ? '#ccc' : '#333'
-        ctx.lineWidth = s.id === selectedId ? 2 : (isUncategorized ? 1 : 0)
+        ctx.strokeStyle = 'rgba(255,255,255,0.8)'
+        ctx.lineWidth = 1
         const r = s.id === hoveredId ? DOT_RADIUS_HOVER : DOT_RADIUS
         ctx.beginPath()
         ctx.arc(s.x, s.y, r, 0, Math.PI * 2)
         ctx.fill()
-        if (s.id === selectedId || s.id === hoveredId || isUncategorized) {
+        ctx.stroke()
+        if (s.id === selectedId) {
+          ctx.strokeStyle = '#333'
+          ctx.lineWidth = 2
           ctx.stroke()
         }
+        ctx.globalAlpha = 1
       }
       ctx.restore()
     }
@@ -170,11 +175,16 @@ export function MapView({
         style={{ position: 'absolute', left: 0, top: 0 }}
       >
         <g transform={`translate(${transform.x},${transform.y}) scale(${transform.k})`}>
-          {hulls.map((h) => (
+          {hulls.map((h) => {
+            const catColor = colorScale.get(h.categoryId)
+            const fillColor = catColor
+              ? `rgba(${parseInt(catColor.slice(1, 3), 16)},${parseInt(catColor.slice(3, 5), 16)},${parseInt(catColor.slice(5, 7), 16)},0.05)`
+              : 'rgba(0,0,0,0.04)'
+            return (
             <path
               key={h.categoryId}
               d={hullToPath(h)}
-              fill="rgba(0,0,0,0.05)"
+              fill={fillColor}
               className="hull-path"
               onClick={(e) => {
                 e.stopPropagation()
@@ -182,7 +192,7 @@ export function MapView({
                 onCategoryClick(h.categoryId, first?.category_name ?? h.categoryId)
               }}
             />
-          ))}
+          )})}
         </g>
       </svg>
       <canvas

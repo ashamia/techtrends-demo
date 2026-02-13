@@ -1,6 +1,7 @@
-import { useState, useCallback } from 'react'
+import { useCallback } from 'react'
 import { FUNDING_BUCKETS } from '../config'
 import { computeAgeBounds } from '../hooks/useFilteredData'
+import { DualRangeSlider } from './DualRangeSlider'
 import type { Startup } from '../types'
 import type { FilterState } from '../types'
 
@@ -15,7 +16,6 @@ export function FiltersPanel({
   filter,
   onFilterChange,
 }: FiltersPanelProps) {
-  const [userGroupOpen, setUserGroupOpen] = useState(false)
   const userGroups = Array.from(
     new Set(startups.map((s) => s.user_group).filter(Boolean))
   ).sort()
@@ -74,73 +74,46 @@ export function FiltersPanel({
   }
 
   return (
-    <div className="filters-panel">
-      <div className="filter-section">
-        <button
-          type="button"
-          className="filter-toggle"
-          onClick={() => setUserGroupOpen(!userGroupOpen)}
-        >
-          User Group
-        </button>
-        {userGroupOpen && (
-          <div className="filter-dropdown">
-            <div className="filter-actions">
-              <button type="button" onClick={selectAllUserGroups}>
-                All
-              </button>
-              <button type="button" onClick={clearUserGroups}>
-                Clear
-              </button>
-            </div>
-            {userGroups.map((g) => (
-              <label key={g} className="filter-checkbox">
-                <input
-                  type="checkbox"
-                  checked={filter.userGroups.has(g)}
-                  onChange={() => toggleUserGroup(g)}
-                />
-                {g}
-              </label>
-            ))}
-          </div>
-        )}
+    <>
+      <div className="filter-card">
+        <div className="filter-section-label">Age</div>
+        <div className="age-value">
+          {filter.ageRange[0]} – {filter.ageRange[1]} years
+        </div>
+        <DualRangeSlider
+          min={minAgeUI}
+          max={maxAgeUI}
+          value={filter.ageRange}
+          onChange={setAgeRange}
+        />
       </div>
 
-      <div className="filter-section">
-        <label className="filter-label">
-          Age: {filter.ageRange[0]} – {filter.ageRange[1]} years
-        </label>
-        <div className="age-slider-wrap">
-          <input
-            type="range"
-            min={minAgeUI}
-            max={maxAgeUI}
-            value={filter.ageRange[0]}
-            onChange={(e) =>
-              setAgeRange([
-                Math.min(Number(e.target.value), filter.ageRange[1] - 1),
-                filter.ageRange[1],
-              ])
-            }
-          />
-          <input
-            type="range"
-            min={minAgeUI}
-            max={maxAgeUI}
-            value={filter.ageRange[1]}
-            onChange={(e) =>
-              setAgeRange([
-                filter.ageRange[0],
-                Math.max(Number(e.target.value), filter.ageRange[0] + 1),
-              ])
-            }
-          />
+      <div className="filter-card">
+        <div className="filter-section-label">User Group</div>
+        <div className="filter-actions">
+          <button type="button" onClick={selectAllUserGroups}>
+            All
+          </button>
+          <button type="button" onClick={clearUserGroups}>
+            Clear
+          </button>
+        </div>
+        <div className="filter-chips">
+          {userGroups.map((g) => (
+            <button
+              key={g}
+              type="button"
+              className={`chip ${filter.userGroups.has(g) ? 'active' : ''}`}
+              onClick={() => toggleUserGroup(g)}
+            >
+              {g}
+            </button>
+          ))}
         </div>
       </div>
 
-      <div className="filter-section">
-        <div className="filter-label">Total Funding</div>
+      <div className="filter-card">
+        <div className="filter-section-label">Total Funding</div>
         <div className="filter-actions">
           <button type="button" onClick={fundingAll}>
             All
@@ -149,7 +122,7 @@ export function FiltersPanel({
             Clear
           </button>
         </div>
-        <div className="funding-chips">
+        <div className="filter-chips">
           {FUNDING_BUCKETS.map((b) => (
             <button
               key={b.id}
@@ -162,6 +135,6 @@ export function FiltersPanel({
           ))}
         </div>
       </div>
-    </div>
+    </>
   )
 }
