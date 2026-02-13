@@ -3,10 +3,12 @@ import { zoomIdentity } from 'd3-zoom'
 import type { ZoomTransform } from 'd3-zoom'
 import { parseStartupsCsv, parseCategoriesCsv, validateStartupsColumns, validateCategoriesColumns } from './data/parse'
 import { useFilteredStartups, computeAgeBounds } from './hooks/useFilteredData'
+import { ProductHeader } from './components/ProductHeader'
+import { PageHeader } from './components/PageHeader'
+import { MetricsPanel } from './components/MetricsPanel'
 import { FiltersPanel } from './components/FiltersPanel'
 import { MapView } from './components/MapView'
-import { StartupModal } from './components/StartupModal'
-import { CategoryModal } from './components/CategoryModal'
+import { DetailSidePanel } from './components/DetailSidePanel'
 import { UploadModal } from './components/UploadModal'
 import type { Startup, Category, FilterState } from './types'
 import { MAX_STARTUPS, PADDING_PERCENT } from './config'
@@ -174,6 +176,7 @@ export default function App() {
       const inCategory = filteredStartups.filter((s) => s.category_id === categoryId)
       const totalFunding = inCategory.reduce((sum, s) => sum + (s.total_funding >= 0 ? s.total_funding : 0), 0)
       const cat = categories.find((c) => c.category_id === categoryId)
+      setSelectedStartup(null)
       setSelectedCategory({
         id: categoryId,
         name: categoryName,
@@ -184,6 +187,11 @@ export default function App() {
     },
     [filteredStartups, categories]
   )
+
+  const handleStartupClick = useCallback((startup: Startup) => {
+    setSelectedCategory(null)
+    setSelectedStartup(startup)
+  }, [])
 
   const warnStartups = startups.length > MAX_STARTUPS
 
@@ -216,76 +224,76 @@ export default function App() {
 
   return (
     <div className="app">
+      <ProductHeader onUploadClick={() => setUploadOpen(true)} />
       {warnStartups && (
         <div className="warning-banner">
           Dataset exceeds {MAX_STARTUPS} startups. Performance may be affected.
         </div>
       )}
-      <header className="header">
-        <div className="header-brand">
-          <h1 className="header-title">Tech Trends</h1>
-          <p className="header-subtitle">
-            {filteredStartups.length.toLocaleString()} startups • {new Set(filteredStartups.map((s) => s.category_id)).size} categories
-          </p>
-        </div>
-        <div className="header-actions">
-          <button type="button" className="btn btn-primary" onClick={() => setUploadOpen(true)}>
-            Upload Custom Data
-          </button>
-          <button type="button" className="btn btn-secondary" onClick={loadDemo}>
-            Reset to Demo Data
-          </button>
-          <button type="button" className="btn btn-secondary" onClick={handleFitToView}>
-            Fit to View
-          </button>
-        </div>
-      </header>
+      <div className="page-header-wrap">
+        <PageHeader
+          startupCount={filteredStartups.length}
+          categoryCount={new Set(filteredStartups.map((s) => s.category_id)).size}
+          onResetDemo={loadDemo}
+          onFitToView={handleFitToView}
+        />
+      </div>
       <div className="main">
         <aside className="sidebar">
           <FiltersPanel
             startups={startups}
             filter={filter!}
             onFilterChange={setFilter}
+            onResetAll={() => setFilter(buildInitialFilter(startups))}
           />
         </aside>
-        <div id="map-wrapper" className="map-wrapper">
-          {transform && (
-            <MapView
-              startups={filteredStartups}
-              width={mapSize.width}
-              height={mapSize.height}
-              bounds={bounds}
-              transform={transform}
-              onTransformChange={setTransform}
-              onStartupClick={setSelectedStartup}
-              onCategoryClick={handleCategoryClick}
-              hoveredId={hoveredId}
-              selectedId={selectedStartup?.id ?? null}
-              onHoverChange={setHoveredId}
-            />
-          )}
-          {filteredStartups.length === 0 && (
-            <div className="empty-state">
-              No startups match current filters.
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => setFilter(buildInitialFilter(startups))}
-              >
-                Reset Filters
-              </button>
-            </div>
-          )}
+        <div className="content-area">
+          <div className="metrics-wrap">
+            <MetricsPanel />
+          </div>
+          <div id="map-wrapper" className="map-wrapper">
+            {transform && (
+              <MapView
+                startups={filteredStartups}
+                width={mapSize.width}
+                height={mapSize.height}
+                bounds={bounds}
+                transform={transform}
+                onTransformChange={setTransform}
+                onStartupClick={handleStartupClick}
+                onCategoryClick={handleCategoryClick}
+                hoveredId={hoveredId}
+                selectedId={selectedStartup?.id ?? null}
+                onHoverChange={setHoveredId}
+              />
+            )}
+            {filteredStartups.length === 0 && (
+              <div className="empty-state">
+                No startups match current filters.
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setFilter(buildInitialFilter(startups))}
+                >
+                  Reset Filters
+                </button>
+              </div>
+            )}
+          </div>
         </div>
+        <DetailSidePanel
+          type={selectedStartup ? 'startup' : 'category'}
+          startup={selectedStartup}
+          categoryName={selectedCategory?.name}
+          startupCount={selectedCategory?.count ?? 0}
+          totalFunding={selectedCategory?.funding ?? 0}
+          description={selectedCategory?.description ?? null}
+          onClose={() => {
+            setSelectedStartup(null)
+            setSelectedCategory(null)
+          }}
+        />
       </div>
-      <StartupModal startup={selectedStartup} onClose={() => setSelectedStartup(null)} />
-      <CategoryModal
-        categoryName={selectedCategory?.name ?? ''}
-        startupCount={selectedCategory?.count ?? 0}
-        totalFunding={selectedCategory?.funding ?? 0}
-        description={selectedCategory?.description ?? null}
-        onClose={() => setSelectedCategory(null)}
-      />
       <UploadModal
         isOpen={uploadOpen}
         onClose={() => setUploadOpen(false)}
