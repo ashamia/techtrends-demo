@@ -1,13 +1,14 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, useState } from 'react'
 import { zoom } from 'd3-zoom'
 import { select } from 'd3-selection'
 import { quadtree } from 'd3-quadtree'
 import { polygonContains } from 'd3-polygon'
 import { computeHulls, hullToPath } from '../hooks/useHulls'
 import { buildColorScale } from '../utils/colors'
-import { DOT_RADIUS, DOT_RADIUS_HOVER, LABEL_ZOOM_THRESHOLD } from '../config'
+import { DOT_RADIUS, DOT_RADIUS_HOVER, DOT_RADIUS_MATCH, DOT_RADIUS_NON_MATCH, LABEL_ZOOM_THRESHOLD, LABEL_FONT_SIZE, LABEL_MIN_WIDTH, LABEL_PILL_PADDING_H, LABEL_CHAR_WIDTH_RATIO, LABEL_OFFSET_ABOVE, LABEL_MAX_HEIGHT, LABEL_PILL_OPACITY, LABEL_PILL_BG_COLOR, LABEL_PILL_BORDER_COLOR, HULL_OPACITY, HULL_OPACITY_DIMMED } from '../config'
 import type { Startup } from '../types'
 import type { ZoomTransform } from 'd3-zoom'
+import type { MatchInfo } from '../utils/search'
 
 interface MapViewProps {
   startups: Startup[]
@@ -21,6 +22,10 @@ interface MapViewProps {
   hoveredId: string | null
   selectedId: string | null
   onHoverChange: (id: string | null) => void
+  searchActive?: boolean
+  matchIds?: Set<string>
+  matchInfo?: Map<string, MatchInfo>
+  categoryMatchCounts?: Map<string, number>
 }
 
 export function MapView({
@@ -35,7 +40,12 @@ export function MapView({
   hoveredId,
   selectedId,
   onHoverChange,
+  searchActive = false,
+  matchIds = new Set(),
+  matchInfo = new Map(),
+  categoryMatchCounts = new Map(),
 }: MapViewProps) {
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; text: string } | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -76,13 +86,41 @@ export function MapView({
       )
 
       for (const s of startups) {
+        const isMatch = searchActive && matchIds.has(s.id)
         const isUncategorized = s.category_name === 'Uncategorized'
-        const color = isUncategorized ? '#888' : (colorScale.get(s.category_id) ?? '#999')
-        ctx.globalAlpha = 0.85
+
+        let color: string
+        let alpha: number
+        let r: number
+        let strokeStyle: string
+        let lineWidth: number
+
+        if (searchActive) {
+          if (isMatch) {
+            color = isUncategorized ? '#888' : (colorScale.get(s.category_id) ?? '#999')
+            alpha = 0.95
+            r = s.id === hoveredId ? DOT_RADIUS_HOVER : DOT_RADIUS_MATCH
+            strokeStyle = 'rgba(255,255,255,1)'
+            lineWidth = 1.5
+          } else {
+            color = '#999'
+            alpha = 0.15
+            r = DOT_RADIUS_NON_MATCH
+            strokeStyle = 'rgba(255,255,255,0.3)'
+            lineWidth = 0.5
+          }
+        } else {
+          color = isUncategorized ? '#888' : (colorScale.get(s.category_id) ?? '#999')
+          alpha = 0.85
+          r = s.id === hoveredId ? DOT_RADIUS_HOVER : DOT_RADIUS
+          strokeStyle = 'rgba(255,255,255,0.8)'
+          lineWidth = 1
+        }
+
+        ctx.globalAlpha = alpha
         ctx.fillStyle = color
-        ctx.strokeStyle = 'rgba(255,255,255,0.8)'
-        ctx.lineWidth = 1
-        const r = s.id === hoveredId ? DOT_RADIUS_HOVER : DOT_RADIUS
+        ctx.strokeStyle = strokeStyle
+        ctx.lineWidth = lineWidth
         ctx.beginPath()
         ctx.arc(s.x, s.y, r, 0, Math.PI * 2)
         ctx.fill()
@@ -98,7 +136,7 @@ export function MapView({
     }
 
     draw()
-  }, [startups, transform, bounds, colorScale, hoveredId, selectedId, width, height])
+  }, [startups, transform, bounds, colorScale, hoveredId, selectedId, width, height, searchActive, matchIds])
 
   const findNearestStartup = useCallback(
     (dataX: number, dataY: number): Startup | null => {
@@ -127,12 +165,24 @@ export function MapView({
       ])
       const found = findNearestStartup(dataX, dataY)
       onHoverChange(found?.id ?? null)
+      if (searchActive && found && matchInfo.has(found.id)) {
+        const info = matchInfo.get(found.id)!
+        const matchedOnStr = info.matchedOn.join(', ')
+        setTooltip({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+          text: `Match strength: ${info.strength.charAt(0).toUpperCase() + info.strength.slice(1)}\nMatched on: ${matchedOnStr}`,
+        })
+      } else {
+        setTooltip(null)
+      }
     },
-    [transform, findNearestStartup, onHoverChange]
+    [transform, findNearestStartup, onHoverChange, searchActive, matchInfo]
   )
 
   const handlePointerLeave = useCallback(() => {
     onHoverChange(null)
+    setTooltip(null)
   }, [onHoverChange])
 
   const handleClick = useCallback(
@@ -168,6 +218,19 @@ export function MapView({
       className="map-container"
       style={{ width, height }}
     >
+      {tooltip && searchActive && (
+        <div
+          className="map-tooltip"
+          style={{
+            left: tooltip.x + 12,
+            top: tooltip.y + 12,
+          }}
+        >
+          {tooltip.text.split('\n').map((line, i) => (
+            <div key={i}>{line}</div>
+          ))}
+        </div>
+      )}
       <svg
         className="map-svg map-svg-hulls"
         width={width}
@@ -177,15 +240,18 @@ export function MapView({
         <g transform={`translate(${transform.x},${transform.y}) scale(${transform.k})`}>
           {hulls.map((h) => {
             const catColor = colorScale.get(h.categoryId)
+            const matchCount = searchActive ? (categoryMatchCounts.get(h.categoryId) ?? 0) : null
+            const hasMatches = matchCount === null || matchCount > 0
+            const fillOpacity = searchActive && !hasMatches ? HULL_OPACITY_DIMMED : HULL_OPACITY
             const fillColor = catColor
-              ? `rgba(${parseInt(catColor.slice(1, 3), 16)},${parseInt(catColor.slice(3, 5), 16)},${parseInt(catColor.slice(5, 7), 16)},0.05)`
-              : 'rgba(0,0,0,0.04)'
+              ? `rgba(${parseInt(catColor.slice(1, 3), 16)},${parseInt(catColor.slice(3, 5), 16)},${parseInt(catColor.slice(5, 7), 16)},${fillOpacity})`
+              : `rgba(0,0,0,${fillOpacity})`
             return (
             <path
               key={h.categoryId}
               d={hullToPath(h)}
               fill={fillColor}
-              className="hull-path"
+              className={`hull-path ${searchActive && !hasMatches ? 'hull-dimmed' : ''}`}
               onClick={(e) => {
                 e.stopPropagation()
                 const first = startups.find((s) => s.category_id === h.categoryId)
@@ -216,10 +282,21 @@ export function MapView({
             hulls.map((h) => {
               const first = startups.find((s) => s.category_id === h.categoryId)
               const name = first?.category_name ?? h.categoryId
+              const matchCount = searchActive ? (categoryMatchCounts.get(h.categoryId) ?? 0) : null
+              const hasMatches = matchCount === null || matchCount > 0
+              const labelText = searchActive && matchCount !== null
+                ? `${name} (${matchCount})`
+                : name
+              const labelWidth = Math.max(
+                LABEL_MIN_WIDTH,
+                labelText.length * LABEL_FONT_SIZE * LABEL_CHAR_WIDTH_RATIO + 2 * LABEL_PILL_PADDING_H
+              )
+              const halfW = labelWidth / 2
+              const labelY = h.centroid[1] - LABEL_OFFSET_ABOVE - LABEL_MAX_HEIGHT / 2
               return (
                 <g
                   key={`label-${h.categoryId}`}
-                  transform={`translate(${h.centroid[0]},${h.centroid[1]})`}
+                  transform={`translate(${h.centroid[0]},${labelY})`}
                   style={{ pointerEvents: 'all', cursor: 'pointer' }}
                   onClick={(e) => {
                     e.stopPropagation()
@@ -227,16 +304,24 @@ export function MapView({
                   }}
                 >
                   <rect
-                    x={-60}
-                    y={-10}
-                    width={120}
-                    height={20}
-                    rx={10}
-                    fill="white"
-                    stroke="#ccc"
+                    x={-halfW}
+                    y={-LABEL_MAX_HEIGHT / 2}
+                    width={labelWidth}
+                    height={LABEL_MAX_HEIGHT}
+                    rx={8}
+                    fill={LABEL_PILL_BG_COLOR}
+                    fillOpacity={LABEL_PILL_OPACITY}
+                    stroke={LABEL_PILL_BORDER_COLOR}
                   />
-                  <text textAnchor="middle" dominantBaseline="middle" fontSize={12}>
-                    {name}
+                  <text
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fontSize={LABEL_FONT_SIZE}
+                    fontWeight={searchActive && hasMatches ? 'bold' : 'normal'}
+                    x={0}
+                    y={0}
+                  >
+                    {labelText}
                   </text>
                 </g>
               )
