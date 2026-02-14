@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { PricingModal } from './PricingModal'
 
 interface ProductHeaderProps {
   onUploadClick: () => void
@@ -8,6 +9,7 @@ export function ProductHeader({ onUploadClick }: ProductHeaderProps) {
   const [avatarOpen, setAvatarOpen] = useState(false)
   const [exportOpen, setExportOpen] = useState(false)
   const [displayOpen, setDisplayOpen] = useState(false)
+  const [pricingOpen, setPricingOpen] = useState(false)
   const avatarRef = useRef<HTMLDivElement>(null)
   const exportRef = useRef<HTMLDivElement>(null)
   const displayRef = useRef<HTMLDivElement>(null)
@@ -30,6 +32,14 @@ export function ProductHeader({ onUploadClick }: ProductHeaderProps) {
         <span className="product-name">Technology Market Maps</span>
       </div>
       <div className="product-header-right">
+        <button
+          type="button"
+          className="header-icon-btn"
+          onClick={() => setPricingOpen(true)}
+          title="Pro License"
+        >
+          Pro License
+        </button>
         <div className="header-dropdown" ref={displayRef}>
           <button
             type="button"
@@ -91,6 +101,7 @@ export function ProductHeader({ onUploadClick }: ProductHeaderProps) {
           )}
         </div>
       </div>
+      <PricingModal isOpen={pricingOpen} onClose={() => setPricingOpen(false)} />
     </header>
   )
 }
