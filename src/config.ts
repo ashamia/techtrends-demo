@@ -1,5 +1,5 @@
 export const DEFAULT_CATEGORIES_FILE_NAME = 'elbit-categories.csv'
-export const DEFAULT_CATEGORIES_PATH = '/elbit-categories.csv'
+export const DEFAULT_CATEGORIES_PATH = `${import.meta.env.BASE_URL}elbit-categories.csv`
 
 export const ZOOM_L1_TO_L2 = 1.3
 export const ZOOM_L2_TO_L1 = 1.1

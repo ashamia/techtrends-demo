@@ -26,7 +26,7 @@ const appStyle = {
   '--hull-opacity-dimmed': HULL_OPACITY_DIM_CLASS,
 } as React.CSSProperties
 
-const DEMO_STARTUPS = '/demo-startups.csv'
+const DEMO_STARTUPS = `${import.meta.env.BASE_URL}demo-startups.csv`
 
 function computeBounds(startups: Startup[]) {
   if (startups.length === 0) {

@@ -1,2 +1,2 @@
+- deploy to a cloud server (github pages?)
 - add pricing 
-- deploy to a cloud server 
