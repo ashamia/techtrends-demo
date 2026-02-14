@@ -1,8 +1,12 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { zoomIdentity } from 'd3-zoom'
 import type { ZoomTransform } from 'd3-zoom'
-import { parseStartupsCsv, parseCategoriesCsv, validateStartupsColumns, validateCategoriesColumns } from './data/parse'
+import { parseStartupsCsv, parseCategoriesCsv, applyCategoriesToStartups, validateStartupsColumns, validateCategoriesColumns } from './data/parse'
 import { useFilteredStartups, computeAgeBounds } from './hooks/useFilteredData'
+import { matchStartups, getCategoryMatchCounts } from './utils/search'
+import { applyClusterLayout } from './utils/clusterLayout'
+import { getHierarchyLevel } from './utils/hierarchy'
+import type { HierarchyLevel } from './types'
 import { ProductHeader } from './components/ProductHeader'
 import { PageHeader } from './components/PageHeader'
 import { MetricsPanel } from './components/MetricsPanel'
@@ -11,11 +15,18 @@ import { MapView } from './components/MapView'
 import { DetailSidePanel } from './components/DetailSidePanel'
 import { UploadModal } from './components/UploadModal'
 import type { Startup, Category, FilterState } from './types'
-import { MAX_STARTUPS, PADDING_PERCENT } from './config'
+import { MAX_STARTUPS, PADDING_PERCENT, GRID_OPACITY, GRID_RGB, GRID_SIZE, HULL_OPACITY_HOVER, HULL_OPACITY_DIM_CLASS, DEFAULT_CATEGORIES_PATH } from './config'
 import { FUNDING_BUCKETS } from './config'
 
+const appStyle = {
+  '--grid-opacity': GRID_OPACITY,
+  '--grid-rgb': GRID_RGB,
+  '--grid-size': `${GRID_SIZE}px`,
+  '--hull-opacity-hover': HULL_OPACITY_HOVER,
+  '--hull-opacity-dimmed': HULL_OPACITY_DIM_CLASS,
+} as React.CSSProperties
+
 const DEMO_STARTUPS = '/demo-startups.csv'
-const DEMO_CATEGORIES = '/demo-categories.csv'
 
 function computeBounds(startups: Startup[]) {
   if (startups.length === 0) {
@@ -81,15 +92,61 @@ export default function App() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [uploadOpen, setUploadOpen] = useState(false)
   const [mapSize, setMapSize] = useState({ width: 800, height: 600 })
+  const [searchQuery, setSearchQuery] = useState('')
+  const [appliedSearch, setAppliedSearch] = useState<string | null>(null)
 
   const filteredStartups = useFilteredStartups(startups, filter ?? ({} as FilterState))
-  const bounds = computeBounds(filteredStartups)
+  const searchActive = appliedSearch !== null && appliedSearch.trim().length > 0
+
+  const { matches: matchingStartups, matchInfo } = searchActive
+    ? matchStartups(filteredStartups, appliedSearch!)
+    : { matches: filteredStartups, matchInfo: new Map() }
+
+  const matchIds = new Set(matchingStartups.map((s) => s.id))
+
+  const hierarchyRef = useRef<{ level: HierarchyLevel; k: number }>({ level: 1, k: 0 })
+  const activeLevel: HierarchyLevel = useMemo(() => {
+    if (!transform) return 1
+    const prev = hierarchyRef.current
+    const zoomingIn = transform.k > prev.k
+    const next = getHierarchyLevel(transform.k, prev.level, zoomingIn)
+    hierarchyRef.current = { level: next, k: transform.k }
+    return next
+  }, [transform])
+
+  const categoryMatchCounts = searchActive ? getCategoryMatchCounts(filteredStartups, matchIds, activeLevel) : new Map<string, number>()
+
+  const layoutStartups = useMemo(
+    () => applyClusterLayout(filteredStartups),
+    [filteredStartups]
+  )
+  const bounds = computeBounds(layoutStartups)
+
+  const startupsRef = useRef(startups)
+  const categoriesRef = useRef(categories)
+  useEffect(() => {
+    startupsRef.current = startups
+    categoriesRef.current = categories
+  }, [startups, categories])
 
   const loadData = useCallback(async (startupsData: Startup[], categoriesData: Category[]) => {
+    applyCategoriesToStartups(startupsData, categoriesData)
     setStartups(startupsData)
     setCategories(categoriesData)
     setFilter(buildInitialFilter(startupsData))
+    setAppliedSearch(null)
+    setSearchQuery('')
     setError(null)
+  }, [])
+
+  const handleSearch = useCallback(() => {
+    const q = searchQuery.trim()
+    setAppliedSearch(q || null)
+  }, [searchQuery])
+
+  const handleClearSearch = useCallback(() => {
+    setAppliedSearch(null)
+    setSearchQuery('')
   }, [])
 
   const loadDemo = useCallback(async () => {
@@ -98,7 +155,7 @@ export default function App() {
     try {
       const [startupsRes, categoriesRes] = await Promise.all([
         fetch(DEMO_STARTUPS),
-        fetch(DEMO_CATEGORIES),
+        fetch(DEFAULT_CATEGORIES_PATH),
       ])
       if (!startupsRes.ok || !categoriesRes.ok) {
         throw new Error('Failed to load demo data.')
@@ -163,29 +220,86 @@ export default function App() {
   }, [bounds])
 
   const handleUploadLoad = useCallback(
-    (startupsData: Startup[], categoriesData: Category[]) => {
-      loadData(startupsData, categoriesData)
-      setFilter(buildInitialFilter(startupsData))
+    (startupsData?: Startup[], categoriesData?: Category[]) => {
+      const currentStartups = startupsRef.current
+      const currentCategories = categoriesRef.current
+      const nextStartups = startupsData ?? currentStartups.map((s) => ({ ...s }))
+      let nextCategories: Category[]
+      if (categoriesData) {
+        if (startupsData) {
+          nextCategories = categoriesData
+        } else {
+          const byId = new Map<string, Category>()
+          const result: Category[] = []
+          const addWithAlias = (c: Category) => {
+            if (byId.has(c.category_id)) return
+            byId.set(c.category_id, c)
+            result.push(c)
+            const m = c.category_id.match(/^cat-(\d+)$/)
+            if (m) {
+              const altId = `cat${m[1]}`
+              if (!byId.has(altId)) {
+                const alias = { ...c, category_id: altId }
+                byId.set(altId, alias)
+                result.push(alias)
+              }
+            }
+            const m2 = c.category_id.match(/^cat(\d+)$/)
+            if (m2) {
+              const altId = `cat-${m2[1]}`
+              if (!byId.has(altId)) {
+                const alias = { ...c, category_id: altId }
+                byId.set(altId, alias)
+                result.push(alias)
+              }
+            }
+          }
+          for (const c of categoriesData) {
+            addWithAlias(c)
+          }
+          for (const c of currentCategories) {
+            if (!byId.has(c.category_id)) {
+              addWithAlias(c)
+            }
+          }
+          nextCategories = result
+        }
+      } else {
+        nextCategories = currentCategories
+      }
+      applyCategoriesToStartups(nextStartups, nextCategories)
+      setStartups([...nextStartups])
+      setCategories([...nextCategories])
+      setFilter(buildInitialFilter(nextStartups))
+      setAppliedSearch(null)
+      setSearchQuery('')
       setTransform(null)
     },
-    [loadData]
+    []
   )
 
   const handleCategoryClick = useCallback(
     (categoryId: string, categoryName: string) => {
-      const inCategory = filteredStartups.filter((s) => s.category_id === categoryId)
+      const getGroupId = (s: Startup) => {
+        if (activeLevel === 1 && s.level1_id) return s.level1_id
+        if (activeLevel === 2 && s.level2_id) return s.level2_id
+        if (activeLevel === 3 && s.level3_id) return s.level3_id
+        return s.category_id
+      }
+      const inCategory = filteredStartups.filter((s) => getGroupId(s) === categoryId)
       const totalFunding = inCategory.reduce((sum, s) => sum + (s.total_funding >= 0 ? s.total_funding : 0), 0)
       const cat = categories.find((c) => c.category_id === categoryId)
+      const matchCount = searchActive ? (categoryMatchCounts.get(categoryId) ?? 0) : inCategory.length
       setSelectedStartup(null)
       setSelectedCategory({
         id: categoryId,
         name: categoryName,
-        count: inCategory.length,
+        count: searchActive ? matchCount : inCategory.length,
         funding: totalFunding,
         description: cat?.category_description?.trim() || null,
       })
     },
-    [filteredStartups, categories]
+    [filteredStartups, categories, searchActive, categoryMatchCounts, activeLevel]
   )
 
   const handleStartupClick = useCallback((startup: Startup) => {
@@ -197,7 +311,7 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="app">
+      <div className="app" style={appStyle}>
         <div className="loading">Loading…</div>
       </div>
     )
@@ -205,7 +319,7 @@ export default function App() {
 
   if (error && startups.length === 0) {
     return (
-      <div className="app">
+      <div className="app" style={appStyle}>
         <div className="error">{error}</div>
         <button type="button" onClick={loadDemo}>
           Retry
@@ -216,28 +330,34 @@ export default function App() {
 
   if (startups.length === 0) {
     return (
-      <div className="app">
+      <div className="app" style={appStyle}>
         <div className="error">No data to display.</div>
       </div>
     )
   }
 
   return (
-    <div className="app">
+    <div className="app" style={appStyle}>
       <ProductHeader onUploadClick={() => setUploadOpen(true)} />
       {warnStartups && (
         <div className="warning-banner">
           Dataset exceeds {MAX_STARTUPS} startups. Performance may be affected.
         </div>
       )}
-      <div className="page-header-wrap">
-        <PageHeader
-          startupCount={filteredStartups.length}
-          categoryCount={new Set(filteredStartups.map((s) => s.category_id)).size}
-          onResetDemo={loadDemo}
-          onFitToView={handleFitToView}
-        />
-      </div>
+      <PageHeader
+        startupCount={filteredStartups.length}
+        categoryCount={new Set(filteredStartups.map((s) => s.category_id)).size}
+        searchActive={searchActive}
+        searchQuery={searchQuery}
+        matchCount={matchingStartups.length}
+        matchCategoryCount={new Set(matchingStartups.map((s) => s.category_id)).size}
+        onSearchQueryChange={setSearchQuery}
+        onSearch={handleSearch}
+        onClearSearch={handleClearSearch}
+        onResetDemo={loadDemo}
+        onFitToView={handleFitToView}
+        activeLevel={activeLevel}
+      />
       <div className="main">
         <aside className="sidebar">
           <FiltersPanel
@@ -247,24 +367,55 @@ export default function App() {
             onResetAll={() => setFilter(buildInitialFilter(startups))}
           />
         </aside>
-        <div className="content-area">
+        <div className={`content-area ${searchActive ? 'search-active' : ''}`}>
           <div className="metrics-wrap">
-            <MetricsPanel />
+            <MetricsPanel
+              searchActive={searchActive}
+              startups={filteredStartups}
+              matchingStartups={matchingStartups}
+            />
           </div>
+          {searchActive && matchingStartups.length <= 30 && (
+            <div className="narrow-query-message">
+              {matchingStartups.length === 0 ? (
+                <>No startups match "{appliedSearch}"</>
+              ) : (
+                <>
+                  {matchingStartups.length} startup{matchingStartups.length !== 1 ? 's' : ''} match "{appliedSearch}"
+                  {(() => {
+                    const topCats = [...categoryMatchCounts.entries()]
+                      .sort((a, b) => b[1] - a[1])
+                      .slice(0, 2)
+                    const catNames = topCats.map(([id]) => {
+                      const s = filteredStartups.find((x) => x.category_id === id)
+                      return s?.category_name ?? id
+                    })
+                    return catNames.length > 0 ? ` — Primarily in ${catNames.join(' and ')}` : ''
+                  })()}
+                </>
+              )}
+            </div>
+          )}
           <div id="map-wrapper" className="map-wrapper">
             {transform && (
               <MapView
-                startups={filteredStartups}
+                startups={layoutStartups}
+                categories={categories}
                 width={mapSize.width}
                 height={mapSize.height}
                 bounds={bounds}
                 transform={transform}
+                activeLevel={activeLevel}
                 onTransformChange={setTransform}
                 onStartupClick={handleStartupClick}
                 onCategoryClick={handleCategoryClick}
                 hoveredId={hoveredId}
                 selectedId={selectedStartup?.id ?? null}
                 onHoverChange={setHoveredId}
+                searchActive={searchActive}
+                matchIds={matchIds}
+                matchInfo={matchInfo}
+                categoryMatchCounts={categoryMatchCounts}
               />
             )}
             {filteredStartups.length === 0 && (
@@ -288,6 +439,10 @@ export default function App() {
           startupCount={selectedCategory?.count ?? 0}
           totalFunding={selectedCategory?.funding ?? 0}
           description={selectedCategory?.description ?? null}
+          searchQuery={searchActive ? appliedSearch : null}
+          categoryMatchCount={selectedCategory && searchActive
+            ? (categoryMatchCounts.get(selectedCategory.id) ?? 0)
+            : undefined}
           onClose={() => {
             setSelectedStartup(null)
             setSelectedCategory(null)

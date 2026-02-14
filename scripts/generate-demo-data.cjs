@@ -182,9 +182,9 @@ function generateStartups() {
 
 function main() {
   const { rows: startups, floaterCategoryCount } = generateStartups()
-  const header = 'id,name,website_url,x,y,category_id,category_name,year_founded,total_funding,hq_country,hq_city,contact_person,description,user_group'
+  const header = 'id,name,website_url,x,y,category_id,year_founded,total_funding,hq_country,hq_city,contact_person,description,user_group'
   const startupLines = [header, ...startups.map(s =>
-    [s.id, s.name, s.website_url, s.x, s.y, s.category_id, s.category_name, s.year_founded, s.total_funding, s.hq_country, s.hq_city, s.contact_person, s.description, s.user_group].map(escapeCsv).join(',')
+    [s.id, s.name, s.website_url, s.x, s.y, s.category_id, s.year_founded, s.total_funding, s.hq_country, s.hq_city, s.contact_person, s.description, s.user_group].map(escapeCsv).join(',')
   )]
   const floaterCategories = Array.from({ length: floaterCategoryCount }, (_, i) => ({
     id: `float-${i + 1}`,

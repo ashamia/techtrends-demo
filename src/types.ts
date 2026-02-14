@@ -13,13 +13,20 @@ export interface Startup {
   contact_person: string
   description: string
   user_group: string
+  level1_id?: string
+  level2_id?: string
+  level3_id?: string
 }
 
 export interface Category {
   category_id: string
   category_name: string
   category_description: string
+  parent_category_id?: string
+  level?: 1 | 2 | 3
 }
+
+export type HierarchyLevel = 1 | 2 | 3
 
 export interface HullPolygon {
   categoryId: string

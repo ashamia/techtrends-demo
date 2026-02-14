@@ -1,54 +1,58 @@
-category_id,category_name,category_description
-cat1,AI/ML,"The AI and machine learning category encompasses startups building intelligent systems that learn from data. These companies develop algorithms for natural language processing, computer vision, and predictive analytics. Enterprise adoption has accelerated as models become more accessible and cost-effective. Key applications include automation, personalization, and decision support across industries. The market is evolving rapidly with foundation models and generative AI opening new possibilities. Startups in this space range from infrastructure providers to vertical-specific AI applications."
-cat2,HealthTech,"HealthTech startups are transforming healthcare delivery through digital innovation. This category includes companies building electronic health records, telemedicine platforms, diagnostic tools, and patient engagement apps. Regulatory compliance and clinical validation are critical success factors. The sector has seen strong growth driven by pandemic-era adoption and ongoing healthcare cost pressures. Investors are particularly interested in solutions that improve outcomes while reducing costs. Integration with existing healthcare IT systems remains a key challenge for many startups."
-cat3,FinTech,"FinTech startups are disrupting traditional financial services with technology-first approaches. This category covers payments, lending, wealth management, insurance tech, and blockchain-based solutions. Regulatory landscape varies significantly by geography and product type. Success often depends on partnerships with banks and achieving critical mass in transactions or users. The sector continues to attract substantial venture capital despite macroeconomic headwinds. Embedded finance and B2B payments are among the fastest-growing segments."
-cat4,Infrastructure,"Infrastructure startups provide the foundational technology that powers modern applications. This includes cloud computing, databases, networking, security, and developer tools. Many successful companies in this space follow a bottom-up adoption strategy, starting with developers before expanding to enterprise sales. The category benefits from the ongoing shift to cloud-native architectures and distributed systems. Open source and developer experience are key differentiators. Competition with hyperscalers remains a strategic consideration for many startups."
-cat5,EdTech,"EdTech startups are reimagining education through technology. This category includes learning management systems, online courses, tutoring platforms, and assessment tools. The pandemic accelerated adoption of digital learning across K-12, higher education, and corporate training. Personalization and accessibility are key trends. Many startups focus on upskilling and reskilling for the evolving job market. Monetization remains challenging with freemium and B2B2C models common."
-cat6,E-commerce,"E-commerce startups are reshaping retail and direct-to-consumer sales. This category covers marketplaces, D2C brands, fulfillment solutions, and checkout infrastructure. Social commerce and live shopping are growing rapidly. Sustainability and supply chain transparency are increasingly important to consumers. Startups often differentiate through niche focus, technology-enabled logistics, or unique customer experiences. International expansion and omnichannel strategies are key growth levers."
-cat7,Cybersecurity,"Cybersecurity startups protect organizations from evolving threats. This category includes identity management, endpoint protection, cloud security, and threat intelligence. Zero trust and AI-driven detection are dominant trends. Regulatory requirements are driving demand across industries. Talent shortage remains a constraint on growth. Consolidation is expected as the market matures. Startups often focus on specific attack vectors or compliance verticals."
-cat8,PropTech,"PropTech startups are digitizing real estate and property management. This category covers listing platforms, property management software, construction tech, and smart building solutions. Residential and commercial segments have different adoption curves. Economic cycles significantly impact funding and growth. Sustainability and ESG reporting are emerging priorities. Integration with legacy systems and industry relationships are critical for success."
-cat9,DevTools,"DevTools startups build software for software developers. This category includes IDEs, CI/CD, testing, observability, and API platforms. Developer experience and time-to-value are key differentiators. Open source and community adoption often precede commercial success. The rise of AI-assisted coding is creating new opportunities. Pricing typically follows usage or seat-based models. Competition with large platform vendors is a constant consideration."
-cat10,ClimateTech,"ClimateTech startups address environmental challenges through technology. This category includes carbon accounting, renewable energy, sustainable materials, and climate adaptation solutions. Regulatory tailwinds and corporate net-zero commitments are driving demand. Hardware and software solutions coexist with different capital requirements. Measurement and verification remain complex. Long sales cycles and policy dependence are common challenges."
-cat11,HRTech,"HRTech startups modernize human resources and talent management. This category covers recruiting, onboarding, payroll, benefits, and employee engagement platforms. Remote work has accelerated adoption of collaboration and productivity tools. AI is increasingly used for screening, matching, and analytics. Integration with existing HRIS is critical. SMB and enterprise segments have different needs and sales motions. Compliance varies by geography."
-cat12,MarketingTech,"MarketingTech startups enable data-driven marketing and customer engagement. This category includes CRM, marketing automation, analytics, and attribution platforms. Privacy regulations are reshaping the landscape. First-party data and consent management are priorities. AI is used for personalization and optimization. Fragmentation persists with point solutions and all-in-one platforms competing. Integration ecosystems and partner networks are important."
-cat13,SaaS,SaaS startups deliver software as a service across verticals and functions. This category encompasses horizontal productivity tools and vertical-specific applications. Subscription economics and predictable revenue attract investors. Land-and-expand and product-led growth are common strategies. Competition from incumbents and new entrants is intense. International expansion and localization are key growth levers. Profitability focus has increased in recent years.
-float-1,Uncategorized,No description available.
-float-2,Uncategorized,No description available.
-float-3,Uncategorized,No description available.
-float-4,Uncategorized,No description available.
-float-5,Uncategorized,No description available.
-float-6,Uncategorized,No description available.
-float-7,Uncategorized,No description available.
-float-8,Uncategorized,No description available.
-float-9,Uncategorized,No description available.
-float-10,Uncategorized,No description available.
-float-11,Uncategorized,No description available.
-float-12,Uncategorized,No description available.
-float-13,Uncategorized,No description available.
-float-14,Uncategorized,No description available.
-float-15,Uncategorized,No description available.
-float-16,Uncategorized,No description available.
-float-17,Uncategorized,No description available.
-float-18,Uncategorized,No description available.
-float-19,Uncategorized,No description available.
-float-20,Uncategorized,No description available.
-float-21,Uncategorized,No description available.
-float-22,Uncategorized,No description available.
-float-23,Uncategorized,No description available.
-float-24,Uncategorized,No description available.
-float-25,Uncategorized,No description available.
-float-26,Uncategorized,No description available.
-float-27,Uncategorized,No description available.
-float-28,Uncategorized,No description available.
-float-29,Uncategorized,No description available.
-float-30,Uncategorized,No description available.
-float-31,Uncategorized,No description available.
-float-32,Uncategorized,No description available.
-float-33,Uncategorized,No description available.
-float-34,Uncategorized,No description available.
-float-35,Uncategorized,No description available.
-float-36,Uncategorized,No description available.
-float-37,Uncategorized,No description available.
-float-38,Uncategorized,No description available.
-float-39,Uncategorized,No description available.
-float-40,Uncategorized,No description available.
+category_id,category_name,category_description,parent_category_id,level
+macro-1,Core Technology,"Infrastructure, developer tools, and foundational technology.",,1
+macro-2,Markets & Commerce,"Financial services, e-commerce, and property technology.",,1
+macro-3,Industries & Solutions,"AI, healthcare, security, climate, HR, marketing, and SaaS.",,1
+macro-4,Uncategorized,No description available.,,1
+cat1,AI/ML,"The AI and machine learning category encompasses startups building intelligent systems that learn from data. These companies develop algorithms for natural language processing, computer vision, and predictive analytics. Enterprise adoption has accelerated as models become more accessible and cost-effective. Key applications include automation, personalization, and decision support across industries. The market is evolving rapidly with foundation models and generative AI opening new possibilities. Startups in this space range from infrastructure providers to vertical-specific AI applications.",macro-3,2
+cat2,HealthTech,"HealthTech startups are transforming healthcare delivery through digital innovation. This category includes companies building electronic health records, telemedicine platforms, diagnostic tools, and patient engagement apps. Regulatory compliance and clinical validation are critical success factors. The sector has seen strong growth driven by pandemic-era adoption and ongoing healthcare cost pressures. Investors are particularly interested in solutions that improve outcomes while reducing costs. Integration with existing healthcare IT systems remains a key challenge for many startups.",macro-3,2
+cat3,FinTech,"FinTech startups are disrupting traditional financial services with technology-first approaches. This category covers payments, lending, wealth management, insurance tech, and blockchain-based solutions. Regulatory landscape varies significantly by geography and product type. Success often depends on partnerships with banks and achieving critical mass in transactions or users. The sector continues to attract substantial venture capital despite macroeconomic headwinds. Embedded finance and B2B payments are among the fastest-growing segments.",macro-2,2
+cat4,Infrastructure,"Infrastructure startups provide the foundational technology that powers modern applications. This includes cloud computing, databases, networking, security, and developer tools. Many successful companies in this space follow a bottom-up adoption strategy, starting with developers before expanding to enterprise sales. The category benefits from the ongoing shift to cloud-native architectures and distributed systems. Open source and developer experience are key differentiators. Competition with hyperscalers remains a strategic consideration for many startups.",macro-1,2
+cat5,EdTech,"EdTech startups are reimagining education through technology. This category includes learning management systems, online courses, tutoring platforms, and assessment tools. The pandemic accelerated adoption of digital learning across K-12, higher education, and corporate training. Personalization and accessibility are key trends. Many startups focus on upskilling and reskilling for the evolving job market. Monetization remains challenging with freemium and B2B2C models common.",macro-1,2
+cat6,E-commerce,"E-commerce startups are reshaping retail and direct-to-consumer sales. This category covers marketplaces, D2C brands, fulfillment solutions, and checkout infrastructure. Social commerce and live shopping are growing rapidly. Sustainability and supply chain transparency are increasingly important to consumers. Startups often differentiate through niche focus, technology-enabled logistics, or unique customer experiences. International expansion and omnichannel strategies are key growth levers.",macro-2,2
+cat7,Cybersecurity,"Cybersecurity startups protect organizations from evolving threats. This category includes identity management, endpoint protection, cloud security, and threat intelligence. Zero trust and AI-driven detection are dominant trends. Regulatory requirements are driving demand across industries. Talent shortage remains a constraint on growth. Consolidation is expected as the market matures. Startups often focus on specific attack vectors or compliance verticals.",macro-3,2
+cat8,PropTech,"PropTech startups are digitizing real estate and property management. This category covers listing platforms, property management software, construction tech, and smart building solutions. Residential and commercial segments have different adoption curves. Economic cycles significantly impact funding and growth. Sustainability and ESG reporting are emerging priorities. Integration with legacy systems and industry relationships are critical for success.",macro-2,2
+cat9,DevTools,"DevTools startups build software for software developers. This category includes IDEs, CI/CD, testing, observability, and API platforms. Developer experience and time-to-value are key differentiators. Open source and community adoption often precede commercial success. The rise of AI-assisted coding is creating new opportunities. Pricing typically follows usage or seat-based models. Competition with large platform vendors is a constant consideration.",macro-1,2
+cat10,ClimateTech,"ClimateTech startups address environmental challenges through technology. This category includes carbon accounting, renewable energy, sustainable materials, and climate adaptation solutions. Regulatory tailwinds and corporate net-zero commitments are driving demand. Hardware and software solutions coexist with different capital requirements. Measurement and verification remain complex. Long sales cycles and policy dependence are common challenges.",macro-3,2
+cat11,HRTech,"HRTech startups modernize human resources and talent management. This category covers recruiting, onboarding, payroll, benefits, and employee engagement platforms. Remote work has accelerated adoption of collaboration and productivity tools. AI is increasingly used for screening, matching, and analytics. Integration with existing HRIS is critical. SMB and enterprise segments have different needs and sales motions. Compliance varies by geography.",macro-3,2
+cat12,MarketingTech,"MarketingTech startups enable data-driven marketing and customer engagement. This category includes CRM, marketing automation, analytics, and attribution platforms. Privacy regulations are reshaping the landscape. First-party data and consent management are priorities. AI is used for personalization and optimization. Fragmentation persists with point solutions and all-in-one platforms competing. Integration ecosystems and partner networks are important.",macro-3,2
+cat13,SaaS,SaaS startups deliver software as a service across verticals and functions. This category encompasses horizontal productivity tools and vertical-specific applications. Subscription economics and predictable revenue attract investors. Land-and-expand and product-led growth are common strategies. Competition from incumbents and new entrants is intense. International expansion and localization are key growth levers. Profitability focus has increased in recent years.,macro-3,2
+float-1,Uncategorized,No description available.,macro-4,2
+float-2,Uncategorized,No description available.,macro-4,2
+float-3,Uncategorized,No description available.,macro-4,2
+float-4,Uncategorized,No description available.,macro-4,2
+float-5,Uncategorized,No description available.,macro-4,2
+float-6,Uncategorized,No description available.,macro-4,2
+float-7,Uncategorized,No description available.,macro-4,2
+float-8,Uncategorized,No description available.,macro-4,2
+float-9,Uncategorized,No description available.,macro-4,2
+float-10,Uncategorized,No description available.,macro-4,2
+float-11,Uncategorized,No description available.,macro-4,2
+float-12,Uncategorized,No description available.,macro-4,2
+float-13,Uncategorized,No description available.,macro-4,2
+float-14,Uncategorized,No description available.,macro-4,2
+float-15,Uncategorized,No description available.,macro-4,2
+float-16,Uncategorized,No description available.,macro-4,2
+float-17,Uncategorized,No description available.,macro-4,2
+float-18,Uncategorized,No description available.,macro-4,2
+float-19,Uncategorized,No description available.,macro-4,2
+float-20,Uncategorized,No description available.,macro-4,2
+float-21,Uncategorized,No description available.,macro-4,2
+float-22,Uncategorized,No description available.,macro-4,2
+float-23,Uncategorized,No description available.,macro-4,2
+float-24,Uncategorized,No description available.,macro-4,2
+float-25,Uncategorized,No description available.,macro-4,2
+float-26,Uncategorized,No description available.,macro-4,2
+float-27,Uncategorized,No description available.,macro-4,2
+float-28,Uncategorized,No description available.,macro-4,2
+float-29,Uncategorized,No description available.,macro-4,2
+float-30,Uncategorized,No description available.,macro-4,2
+float-31,Uncategorized,No description available.,macro-4,2
+float-32,Uncategorized,No description available.,macro-4,2
+float-33,Uncategorized,No description available.,macro-4,2
+float-34,Uncategorized,No description available.,macro-4,2
+float-35,Uncategorized,No description available.,macro-4,2
+float-36,Uncategorized,No description available.,macro-4,2
+float-37,Uncategorized,No description available.,macro-4,2
+float-38,Uncategorized,No description available.,macro-4,2
+float-39,Uncategorized,No description available.,macro-4,2
+float-40,Uncategorized,No description available.,macro-4,2

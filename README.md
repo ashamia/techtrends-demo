@@ -36,5 +36,7 @@ npm run preview
 
 See `docs/specs.md` for full CSV schema. Required files:
 
-- `demo-startups.csv` – startup records
-- `demo-categories.csv` – category descriptions
+- `demo-startups.csv` – startup records (id, name, x, y, category_id, etc.)
+- `demo-categories.csv` – **category names and descriptions** (edit this file to change cluster labels and side-panel descriptions)
+
+The categories file (`public/demo-categories.csv`) is the source of truth for cluster names and descriptions. Edit it directly when you need to update labels or category descriptions; changes apply after reloading the app.

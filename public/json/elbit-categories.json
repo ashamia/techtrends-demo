@@ -1,0 +1,1241 @@
+{
+  "taxonomy_name": "Elbit startup landscape categories",
+  "version": "1.0",
+  "nodes": [
+    {
+      "category_id": "cat1",
+      "category_name": "Autonomous Defense Systems",
+      "category_description": "Startups in autonomous defense systems develop unmanned platforms for air, land, and sea operations. These include autonomous drones, robotic ground vehicles, and naval unmanned vessels. The focus is on reducing human exposure in high-risk environments. Many companies integrate AI-based navigation and target recognition. Dual-use applications extend into disaster response and border security. This category is central to next-generation battlefield modernization.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat1-1",
+          "category_name": "Unmanned Aerial Systems (UAS)",
+          "category_description": "This sub-category sits within Autonomous Defense Systems and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat1-1-1",
+              "category_name": "Tactical ISR Drones",
+              "category_description": "This micro-category is a specific startup lane under Unmanned Aerial Systems (UAS). Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat1-1-2",
+              "category_name": "Autonomous Swarm Drones",
+              "category_description": "This micro-category is a specific startup lane under Unmanned Aerial Systems (UAS). Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat1-1-3",
+              "category_name": "Counter-UAS Platforms",
+              "category_description": "This micro-category is a specific startup lane under Unmanned Aerial Systems (UAS). Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat1-2",
+          "category_name": "Autonomous Ground Vehicles",
+          "category_description": "This sub-category sits within Autonomous Defense Systems and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat1-2-1",
+              "category_name": "Reconnaissance UGVs",
+              "category_description": "This micro-category is a specific startup lane under Autonomous Ground Vehicles. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat1-2-2",
+              "category_name": "Logistics & Resupply Robotics",
+              "category_description": "This micro-category is a specific startup lane under Autonomous Ground Vehicles. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat1-2-3",
+              "category_name": "Combat Support Vehicles",
+              "category_description": "This micro-category is a specific startup lane under Autonomous Ground Vehicles. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat1-3",
+          "category_name": "Maritime Autonomous Systems",
+          "category_description": "This sub-category sits within Autonomous Defense Systems and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat1-3-1",
+              "category_name": "Unmanned Surface Vessels",
+              "category_description": "This micro-category is a specific startup lane under Maritime Autonomous Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat1-3-2",
+              "category_name": "Autonomous Underwater Vehicles",
+              "category_description": "This micro-category is a specific startup lane under Maritime Autonomous Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat1-3-3",
+              "category_name": "Port & Coastal Security Drones",
+              "category_description": "This micro-category is a specific startup lane under Maritime Autonomous Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat10",
+      "category_name": "Hypersonic & Advanced Propulsion",
+      "category_description": "This category includes startups working on advanced propulsion and hypersonic technologies. Innovations focus on high-speed flight systems and next-generation missile technologies. Research areas include materials resilience and propulsion efficiency. Some technologies extend to aerospace and commercial space travel. The sector is highly strategic and technologically demanding. Advanced propulsion is central to maintaining defense superiority.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat10-1",
+          "category_name": "Hypersonic Vehicles",
+          "category_description": "This sub-category sits within Hypersonic & Advanced Propulsion and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat10-1-1",
+              "category_name": "Glide Vehicles",
+              "category_description": "This micro-category is a specific startup lane under Hypersonic Vehicles. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat10-1-2",
+              "category_name": "Hypersonic Cruise Systems",
+              "category_description": "This micro-category is a specific startup lane under Hypersonic Vehicles. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat10-1-3",
+              "category_name": "Advanced Control Systems",
+              "category_description": "This micro-category is a specific startup lane under Hypersonic Vehicles. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat10-2",
+          "category_name": "Advanced Propulsion Systems",
+          "category_description": "This sub-category sits within Hypersonic & Advanced Propulsion and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat10-2-1",
+              "category_name": "Scramjet Technologies",
+              "category_description": "This micro-category is a specific startup lane under Advanced Propulsion Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat10-2-2",
+              "category_name": "Electric Propulsion",
+              "category_description": "This micro-category is a specific startup lane under Advanced Propulsion Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat10-2-3",
+              "category_name": "High-Efficiency Turbines",
+              "category_description": "This micro-category is a specific startup lane under Advanced Propulsion Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat10-3",
+          "category_name": "Advanced Materials & Heat Shielding",
+          "category_description": "This sub-category sits within Hypersonic & Advanced Propulsion and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat10-3-1",
+              "category_name": "Thermal Protection Systems",
+              "category_description": "This micro-category is a specific startup lane under Advanced Materials & Heat Shielding. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat10-3-2",
+              "category_name": "High-Temperature Alloys",
+              "category_description": "This micro-category is a specific startup lane under Advanced Materials & Heat Shielding. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat10-3-3",
+              "category_name": "Composite Structural Materials",
+              "category_description": "This micro-category is a specific startup lane under Advanced Materials & Heat Shielding. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat11",
+      "category_name": "Border & Homeland Security Tech",
+      "category_description": "Border and homeland security startups develop surveillance and monitoring solutions. Technologies include biometric systems, perimeter detection, and smart fencing. AI enhances anomaly detection across large geographic areas. Civilian agencies and infrastructure operators also adopt these tools. The solutions bridge military and domestic security use cases. The category enhances national resilience and threat prevention.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat11-1",
+          "category_name": "Smart Border Systems",
+          "category_description": "This sub-category sits within Border & Homeland Security Tech and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat11-1-1",
+              "category_name": "Perimeter Detection Sensors",
+              "category_description": "This micro-category is a specific startup lane under Smart Border Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat11-1-2",
+              "category_name": "Smart Fencing Systems",
+              "category_description": "This micro-category is a specific startup lane under Smart Border Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat11-1-3",
+              "category_name": "Automated Patrol Systems",
+              "category_description": "This micro-category is a specific startup lane under Smart Border Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat11-2",
+          "category_name": "Biometric & Identity Systems",
+          "category_description": "This sub-category sits within Border & Homeland Security Tech and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat11-2-1",
+              "category_name": "Facial Recognition",
+              "category_description": "This micro-category is a specific startup lane under Biometric & Identity Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat11-2-2",
+              "category_name": "Multimodal Biometrics",
+              "category_description": "This micro-category is a specific startup lane under Biometric & Identity Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat11-2-3",
+              "category_name": "Secure Identity Verification",
+              "category_description": "This micro-category is a specific startup lane under Biometric & Identity Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat11-3",
+          "category_name": "Critical Infrastructure Protection",
+          "category_description": "This sub-category sits within Border & Homeland Security Tech and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat11-3-1",
+              "category_name": "Facility Surveillance Systems",
+              "category_description": "This micro-category is a specific startup lane under Critical Infrastructure Protection. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat11-3-2",
+              "category_name": "Intrusion Detection Platforms",
+              "category_description": "This micro-category is a specific startup lane under Critical Infrastructure Protection. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat11-3-3",
+              "category_name": "Resilience Monitoring Systems",
+              "category_description": "This micro-category is a specific startup lane under Critical Infrastructure Protection. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat12",
+      "category_name": "Defense Simulation & Training",
+      "category_description": "Defense simulation startups build training environments using VR, AR, and digital twins. These tools allow military personnel to train in realistic virtual scenarios. Simulation reduces costs and risk compared to live exercises. AI-driven feedback enhances training outcomes. Similar systems are applied in aviation and emergency response training. The category supports readiness and operational preparedness.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat12-1",
+          "category_name": "Virtual & Augmented Training",
+          "category_description": "This sub-category sits within Defense Simulation & Training and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat12-1-1",
+              "category_name": "VR Combat Simulation",
+              "category_description": "This micro-category is a specific startup lane under Virtual & Augmented Training. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat12-1-2",
+              "category_name": "AR Maintenance Training",
+              "category_description": "This micro-category is a specific startup lane under Virtual & Augmented Training. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat12-1-3",
+              "category_name": "Immersive Tactical Scenarios",
+              "category_description": "This micro-category is a specific startup lane under Virtual & Augmented Training. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat12-2",
+          "category_name": "Digital Twin Systems",
+          "category_description": "This sub-category sits within Defense Simulation & Training and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat12-2-1",
+              "category_name": "Platform Digital Twins",
+              "category_description": "This micro-category is a specific startup lane under Digital Twin Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat12-2-2",
+              "category_name": "Operational Scenario Modeling",
+              "category_description": "This micro-category is a specific startup lane under Digital Twin Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat12-2-3",
+              "category_name": "Infrastructure Simulation",
+              "category_description": "This micro-category is a specific startup lane under Digital Twin Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat12-3",
+          "category_name": "AI-Driven Training Analytics",
+          "category_description": "This sub-category sits within Defense Simulation & Training and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat12-3-1",
+              "category_name": "Performance Analytics",
+              "category_description": "This micro-category is a specific startup lane under AI-Driven Training Analytics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat12-3-2",
+              "category_name": "Adaptive Training Engines",
+              "category_description": "This micro-category is a specific startup lane under AI-Driven Training Analytics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat12-3-3",
+              "category_name": "Mission Debrief Systems",
+              "category_description": "This micro-category is a specific startup lane under AI-Driven Training Analytics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat13",
+      "category_name": "Secure Embedded Systems & Avionics",
+      "category_description": "Startups in secure embedded systems develop hardened avionics and mission-critical hardware. Solutions ensure reliability under extreme environmental and cyber conditions. Companies focus on secure processors and trusted hardware modules. Integration with aircraft and armored platforms is common. Civil aerospace also benefits from similar innovations. Secure hardware foundations are essential for advanced defense systems.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat13-1",
+          "category_name": "Hardened Avionics",
+          "category_description": "This sub-category sits within Secure Embedded Systems & Avionics and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat13-1-1",
+              "category_name": "Secure Flight Control Systems",
+              "category_description": "This micro-category is a specific startup lane under Hardened Avionics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat13-1-2",
+              "category_name": "Military-Grade Navigation Systems",
+              "category_description": "This micro-category is a specific startup lane under Hardened Avionics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat13-1-3",
+              "category_name": "Redundant Control Architectures",
+              "category_description": "This micro-category is a specific startup lane under Hardened Avionics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat13-2",
+          "category_name": "Secure Processors & Chips",
+          "category_description": "This sub-category sits within Secure Embedded Systems & Avionics and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat13-2-1",
+              "category_name": "Trusted Execution Environments",
+              "category_description": "This micro-category is a specific startup lane under Secure Processors & Chips. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat13-2-2",
+              "category_name": "Secure Microcontrollers",
+              "category_description": "This micro-category is a specific startup lane under Secure Processors & Chips. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat13-2-3",
+              "category_name": "Radiation-Hardened Chips",
+              "category_description": "This micro-category is a specific startup lane under Secure Processors & Chips. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat13-3",
+          "category_name": "Mission-Critical Hardware Integration",
+          "category_description": "This sub-category sits within Secure Embedded Systems & Avionics and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat13-3-1",
+              "category_name": "Platform Integration Systems",
+              "category_description": "This micro-category is a specific startup lane under Mission-Critical Hardware Integration. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat13-3-2",
+              "category_name": "Secure Embedded Firmware",
+              "category_description": "This micro-category is a specific startup lane under Mission-Critical Hardware Integration. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat13-3-3",
+              "category_name": "Real-Time Control Modules",
+              "category_description": "This micro-category is a specific startup lane under Mission-Critical Hardware Integration. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat2",
+      "category_name": "Advanced ISR Technologies",
+      "category_description": "Advanced ISR technologies cover intelligence, surveillance, and reconnaissance solutions. Startups build high-resolution imaging, persistent monitoring, and signal intelligence platforms. AI-enabled data fusion improves situational awareness in real time. These systems often operate across satellite, airborne, and ground sensors. Civil applications include infrastructure monitoring and maritime tracking. The category directly supports modern command and control capabilities.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat2-1",
+          "category_name": "Airborne ISR Platforms",
+          "category_description": "This sub-category sits within Advanced ISR Technologies and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat2-1-1",
+              "category_name": "Persistent Aerial Surveillance",
+              "category_description": "This micro-category is a specific startup lane under Airborne ISR Platforms. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat2-1-2",
+              "category_name": "Signals Intelligence Payloads",
+              "category_description": "This micro-category is a specific startup lane under Airborne ISR Platforms. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat2-1-3",
+              "category_name": "Real-Time Data Fusion Systems",
+              "category_description": "This micro-category is a specific startup lane under Airborne ISR Platforms. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat2-2",
+          "category_name": "Ground-Based ISR",
+          "category_description": "This sub-category sits within Advanced ISR Technologies and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat2-2-1",
+              "category_name": "Border Surveillance Towers",
+              "category_description": "This micro-category is a specific startup lane under Ground-Based ISR. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat2-2-2",
+              "category_name": "Acoustic & Seismic Detection",
+              "category_description": "This micro-category is a specific startup lane under Ground-Based ISR. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat2-2-3",
+              "category_name": "Battlefield Sensor Networks",
+              "category_description": "This micro-category is a specific startup lane under Ground-Based ISR. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat2-3",
+          "category_name": "Data Analytics & Fusion",
+          "category_description": "This sub-category sits within Advanced ISR Technologies and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat2-3-1",
+              "category_name": "Multi-Sensor Fusion Engines",
+              "category_description": "This micro-category is a specific startup lane under Data Analytics & Fusion. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat2-3-2",
+              "category_name": "Automated Threat Classification",
+              "category_description": "This micro-category is a specific startup lane under Data Analytics & Fusion. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat2-3-3",
+              "category_name": "Predictive Intelligence Models",
+              "category_description": "This micro-category is a specific startup lane under Data Analytics & Fusion. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat3",
+      "category_name": "Military Cybersecurity",
+      "category_description": "Military cybersecurity startups protect defense systems, communications, and classified networks. They specialize in threat detection, zero-trust architectures, and operational technology security. Solutions address both cyber warfare and electronic intrusion risks. Many companies focus on protecting weapons platforms and mission-critical software. The sector increasingly intersects with AI-driven anomaly detection. Robust cyber resilience is fundamental to modern defense operations.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat3-1",
+          "category_name": "Network Defense",
+          "category_description": "This sub-category sits within Military Cybersecurity and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat3-1-1",
+              "category_name": "Zero-Trust Architectures",
+              "category_description": "This micro-category is a specific startup lane under Network Defense. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat3-1-2",
+              "category_name": "Intrusion Detection Systems",
+              "category_description": "This micro-category is a specific startup lane under Network Defense. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat3-1-3",
+              "category_name": "Secure Network Segmentation",
+              "category_description": "This micro-category is a specific startup lane under Network Defense. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat3-2",
+          "category_name": "Operational Technology (OT) Security",
+          "category_description": "This sub-category sits within Military Cybersecurity and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat3-2-1",
+              "category_name": "ICS/SCADA Protection",
+              "category_description": "This micro-category is a specific startup lane under Operational Technology (OT) Security. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat3-2-2",
+              "category_name": "Embedded System Hardening",
+              "category_description": "This micro-category is a specific startup lane under Operational Technology (OT) Security. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat3-2-3",
+              "category_name": "Mission System Security",
+              "category_description": "This micro-category is a specific startup lane under Operational Technology (OT) Security. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat3-3",
+          "category_name": "Offensive & Defensive Cyber Ops",
+          "category_description": "This sub-category sits within Military Cybersecurity and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat3-3-1",
+              "category_name": "Cyber Range Platforms",
+              "category_description": "This micro-category is a specific startup lane under Offensive & Defensive Cyber Ops. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat3-3-2",
+              "category_name": "Adversarial Simulation Tools",
+              "category_description": "This micro-category is a specific startup lane under Offensive & Defensive Cyber Ops. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat3-3-3",
+              "category_name": "Threat Intelligence Platforms",
+              "category_description": "This micro-category is a specific startup lane under Offensive & Defensive Cyber Ops. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat4",
+      "category_name": "Electronic Warfare & Signal Intelligence",
+      "category_description": "This category includes startups developing electronic warfare and signal intelligence capabilities. Solutions focus on jamming, signal interception, and spectrum dominance. Companies work on protecting communications while disrupting adversary systems. Advanced radio frequency analytics and software-defined radios are core technologies. Civil aviation and telecom applications sometimes emerge from these innovations. The category enhances battlefield survivability and intelligence gathering.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat4-1",
+          "category_name": "Spectrum Dominance",
+          "category_description": "This sub-category sits within Electronic Warfare & Signal Intelligence and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat4-1-1",
+              "category_name": "RF Signal Mapping",
+              "category_description": "This micro-category is a specific startup lane under Spectrum Dominance. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat4-1-2",
+              "category_name": "Adaptive Jamming Systems",
+              "category_description": "This micro-category is a specific startup lane under Spectrum Dominance. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat4-1-3",
+              "category_name": "Anti-Jamming Countermeasures",
+              "category_description": "This micro-category is a specific startup lane under Spectrum Dominance. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat4-2",
+          "category_name": "Signal Interception",
+          "category_description": "This sub-category sits within Electronic Warfare & Signal Intelligence and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat4-2-1",
+              "category_name": "Software-Defined Radios",
+              "category_description": "This micro-category is a specific startup lane under Signal Interception. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat4-2-2",
+              "category_name": "Communications Interception",
+              "category_description": "This micro-category is a specific startup lane under Signal Interception. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat4-2-3",
+              "category_name": "Spectrum Analytics",
+              "category_description": "This micro-category is a specific startup lane under Signal Interception. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat4-3",
+          "category_name": "Electromagnetic Protection",
+          "category_description": "This sub-category sits within Electronic Warfare & Signal Intelligence and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat4-3-1",
+              "category_name": "Shielded Communications",
+              "category_description": "This micro-category is a specific startup lane under Electromagnetic Protection. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat4-3-2",
+              "category_name": "EMP Resilience Systems",
+              "category_description": "This micro-category is a specific startup lane under Electromagnetic Protection. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat4-3-3",
+              "category_name": "Secure RF Components",
+              "category_description": "This micro-category is a specific startup lane under Electromagnetic Protection. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat5",
+      "category_name": "Secure Communications & Encryption",
+      "category_description": "Secure communications startups build encrypted communication systems for military and government use. Technologies include secure radios, satellite links, and post-quantum encryption. Startups focus on maintaining secure channels in contested environments. Many integrate anti-jamming and redundancy features. Civil uses include critical infrastructure communications. The category ensures reliable coordination during high-stakes missions.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat5-1",
+          "category_name": "Tactical Communications",
+          "category_description": "This sub-category sits within Secure Communications & Encryption and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat5-1-1",
+              "category_name": "Secure Battlefield Radios",
+              "category_description": "This micro-category is a specific startup lane under Tactical Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat5-1-2",
+              "category_name": "Encrypted Mesh Networks",
+              "category_description": "This micro-category is a specific startup lane under Tactical Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat5-1-3",
+              "category_name": "Anti-Jamming Comms",
+              "category_description": "This micro-category is a specific startup lane under Tactical Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat5-2",
+          "category_name": "Satellite Communications",
+          "category_description": "This sub-category sits within Secure Communications & Encryption and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat5-2-1",
+              "category_name": "Military Satcom Terminals",
+              "category_description": "This micro-category is a specific startup lane under Satellite Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat5-2-2",
+              "category_name": "Resilient Space Links",
+              "category_description": "This micro-category is a specific startup lane under Satellite Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat5-2-3",
+              "category_name": "Tactical Data Links",
+              "category_description": "This micro-category is a specific startup lane under Satellite Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat5-3",
+          "category_name": "Advanced Cryptography",
+          "category_description": "This sub-category sits within Secure Communications & Encryption and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat5-3-1",
+              "category_name": "Post-Quantum Encryption",
+              "category_description": "This micro-category is a specific startup lane under Advanced Cryptography. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat5-3-2",
+              "category_name": "Hardware Encryption Modules",
+              "category_description": "This micro-category is a specific startup lane under Advanced Cryptography. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat5-3-3",
+              "category_name": "Secure Key Management",
+              "category_description": "This micro-category is a specific startup lane under Advanced Cryptography. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat6",
+      "category_name": "Defense AI & Decision Support",
+      "category_description": "Defense AI startups create decision-support systems for commanders and operators. These platforms process large volumes of battlefield data to generate insights. Applications include threat prediction, logistics optimization, and autonomous targeting assistance. Companies leverage machine learning for rapid response scenarios. Dual-use analytics can serve emergency services and homeland security. AI-enabled decision systems accelerate operational effectiveness.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat6-1",
+          "category_name": "Command & Control AI",
+          "category_description": "This sub-category sits within Defense AI & Decision Support and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat6-1-1",
+              "category_name": "Mission Planning Optimization",
+              "category_description": "This micro-category is a specific startup lane under Command & Control AI. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat6-1-2",
+              "category_name": "Threat Prediction Systems",
+              "category_description": "This micro-category is a specific startup lane under Command & Control AI. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat6-1-3",
+              "category_name": "AI-Assisted Targeting",
+              "category_description": "This micro-category is a specific startup lane under Command & Control AI. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat6-2",
+          "category_name": "Logistics & Supply Chain AI",
+          "category_description": "This sub-category sits within Defense AI & Decision Support and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat6-2-1",
+              "category_name": "Predictive Maintenance",
+              "category_description": "This micro-category is a specific startup lane under Logistics & Supply Chain AI. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat6-2-2",
+              "category_name": "Autonomous Resupply Planning",
+              "category_description": "This micro-category is a specific startup lane under Logistics & Supply Chain AI. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat6-2-3",
+              "category_name": "Inventory Optimization",
+              "category_description": "This micro-category is a specific startup lane under Logistics & Supply Chain AI. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat6-3",
+          "category_name": "Real-Time Battlefield Analytics",
+          "category_description": "This sub-category sits within Defense AI & Decision Support and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat6-3-1",
+              "category_name": "Situational Awareness Dashboards",
+              "category_description": "This micro-category is a specific startup lane under Real-Time Battlefield Analytics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat6-3-2",
+              "category_name": "AI-Based Alert Systems",
+              "category_description": "This micro-category is a specific startup lane under Real-Time Battlefield Analytics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat6-3-3",
+              "category_name": "Tactical Simulation Engines",
+              "category_description": "This micro-category is a specific startup lane under Real-Time Battlefield Analytics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat7",
+      "category_name": "Advanced Optics & Electro-Optical Systems",
+      "category_description": "Startups in advanced optics develop electro-optical sensors and targeting systems. Products include night vision, thermal imaging, and precision guidance optics. Many companies innovate in miniaturization and enhanced range detection. These systems are critical for air and ground platforms. Civilian applications include border surveillance and industrial inspection. The category supports enhanced visibility in complex operational conditions.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat7-1",
+          "category_name": "Night & Thermal Vision",
+          "category_description": "This sub-category sits within Advanced Optics & Electro-Optical Systems and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat7-1-1",
+              "category_name": "Thermal Imaging Sensors",
+              "category_description": "This micro-category is a specific startup lane under Night & Thermal Vision. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat7-1-2",
+              "category_name": "Infrared Targeting Systems",
+              "category_description": "This micro-category is a specific startup lane under Night & Thermal Vision. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat7-1-3",
+              "category_name": "Low-Light Optics",
+              "category_description": "This micro-category is a specific startup lane under Night & Thermal Vision. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat7-2",
+          "category_name": "Precision Targeting Systems",
+          "category_description": "This sub-category sits within Advanced Optics & Electro-Optical Systems and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat7-2-1",
+              "category_name": "Laser Guidance Systems",
+              "category_description": "This micro-category is a specific startup lane under Precision Targeting Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat7-2-2",
+              "category_name": "Smart Optics Integration",
+              "category_description": "This micro-category is a specific startup lane under Precision Targeting Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat7-2-3",
+              "category_name": "Fire Control Systems",
+              "category_description": "This micro-category is a specific startup lane under Precision Targeting Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat7-3",
+          "category_name": "Miniaturized Optical Systems",
+          "category_description": "This sub-category sits within Advanced Optics & Electro-Optical Systems and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat7-3-1",
+              "category_name": "UAV Sensor Payloads",
+              "category_description": "This micro-category is a specific startup lane under Miniaturized Optical Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat7-3-2",
+              "category_name": "Wearable Optics",
+              "category_description": "This micro-category is a specific startup lane under Miniaturized Optical Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat7-3-3",
+              "category_name": "Compact Surveillance Cameras",
+              "category_description": "This micro-category is a specific startup lane under Miniaturized Optical Systems. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat8",
+      "category_name": "Space & Defense Satellites",
+      "category_description": "Space-focused defense startups design satellite systems for secure communication and reconnaissance. Solutions include small satellite constellations and resilient space-based sensors. Companies improve redundancy against anti-satellite threats. Satellite data is integrated with ground and airborne assets. Commercial earth observation markets benefit from similar technologies. Space-based capabilities are becoming foundational to national security.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat8-1",
+          "category_name": "Earth Observation",
+          "category_description": "This sub-category sits within Space & Defense Satellites and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat8-1-1",
+              "category_name": "High-Resolution Imaging",
+              "category_description": "This micro-category is a specific startup lane under Earth Observation. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat8-1-2",
+              "category_name": "SAR Satellites",
+              "category_description": "This micro-category is a specific startup lane under Earth Observation. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat8-1-3",
+              "category_name": "Multi-Spectral Sensors",
+              "category_description": "This micro-category is a specific startup lane under Earth Observation. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat8-2",
+          "category_name": "Secure Space Communications",
+          "category_description": "This sub-category sits within Space & Defense Satellites and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat8-2-1",
+              "category_name": "Encrypted Satellite Links",
+              "category_description": "This micro-category is a specific startup lane under Secure Space Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat8-2-2",
+              "category_name": "Anti-Jamming Space Systems",
+              "category_description": "This micro-category is a specific startup lane under Secure Space Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat8-2-3",
+              "category_name": "Space Resilience Networks",
+              "category_description": "This micro-category is a specific startup lane under Secure Space Communications. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat8-3",
+          "category_name": "Space Domain Awareness",
+          "category_description": "This sub-category sits within Space & Defense Satellites and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat8-3-1",
+              "category_name": "Orbital Tracking Systems",
+              "category_description": "This micro-category is a specific startup lane under Space Domain Awareness. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat8-3-2",
+              "category_name": "Space Debris Monitoring",
+              "category_description": "This micro-category is a specific startup lane under Space Domain Awareness. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat8-3-3",
+              "category_name": "Counter-Space Defense",
+              "category_description": "This micro-category is a specific startup lane under Space Domain Awareness. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "cat9",
+      "category_name": "Battlefield Robotics",
+      "category_description": "Battlefield robotics startups develop robotic systems for logistics, reconnaissance, and combat support. These platforms can transport equipment, defuse explosives, or conduct scouting missions. AI enhances autonomy and adaptability in harsh terrains. Robotics reduces human risk and increases operational efficiency. Spin-offs include industrial automation and search-and-rescue systems. The field represents a major modernization frontier in defense.",
+      "level": 1,
+      "children": [
+        {
+          "category_id": "cat9-1",
+          "category_name": "Explosive Ordnance Disposal (EOD)",
+          "category_description": "This sub-category sits within Battlefield Robotics and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat9-1-1",
+              "category_name": "Bomb Disposal Robots",
+              "category_description": "This micro-category is a specific startup lane under Explosive Ordnance Disposal (EOD). Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat9-1-2",
+              "category_name": "Remote Manipulation Systems",
+              "category_description": "This micro-category is a specific startup lane under Explosive Ordnance Disposal (EOD). Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat9-1-3",
+              "category_name": "Hazardous Material Robotics",
+              "category_description": "This micro-category is a specific startup lane under Explosive Ordnance Disposal (EOD). Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat9-2",
+          "category_name": "Tactical Support Robotics",
+          "category_description": "This sub-category sits within Battlefield Robotics and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat9-2-1",
+              "category_name": "Autonomous Resupply Bots",
+              "category_description": "This micro-category is a specific startup lane under Tactical Support Robotics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat9-2-2",
+              "category_name": "Casualty Evacuation Robots",
+              "category_description": "This micro-category is a specific startup lane under Tactical Support Robotics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat9-2-3",
+              "category_name": "Perimeter Patrol Robots",
+              "category_description": "This micro-category is a specific startup lane under Tactical Support Robotics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "category_id": "cat9-3",
+          "category_name": "Swarm Robotics",
+          "category_description": "This sub-category sits within Battlefield Robotics and captures a focused capability area for startup scouting. Startups here typically ship deployable subsystems, software modules, or platform components rather than full end-to-end solutions. Key differentiators often include robustness in contested environments, low SWaP constraints, and integration-readiness. Commercial spillover into aerospace, robotics, and critical infrastructure is common. This grouping enables more precise search, filtering, and competitive mapping inside the parent category. It is intended to surface concentrated pockets of innovation and funding momentum.",
+          "level": 2,
+          "children": [
+            {
+              "category_id": "cat9-3-1",
+              "category_name": "Coordinated Drone Swarms",
+              "category_description": "This micro-category is a specific startup lane under Swarm Robotics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat9-3-2",
+              "category_name": "Autonomous Robot Fleets",
+              "category_description": "This micro-category is a specific startup lane under Swarm Robotics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            },
+            {
+              "category_id": "cat9-3-3",
+              "category_name": "AI Swarm Coordination Engines",
+              "category_description": "This micro-category is a specific startup lane under Swarm Robotics. Companies usually focus on a narrow technical wedge or product module with clear performance metrics. Typical requirements include high reliability, secure operation, and rapid integration with existing systems. These startups are useful for early signal detection and partnership or acquisition scanning. Dual-use applications can extend into industrial automation, security, or aerospace markets. This label is designed for high-zoom exploration and fine-grained clustering.",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

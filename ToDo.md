@@ -1,0 +1,2 @@
+- add pricing 
+- deploy to a cloud server 

@@ -9,6 +9,8 @@ interface DetailSidePanelProps {
   startupCount?: number
   totalFunding?: number
   description?: string | null
+  searchQuery?: string | null
+  categoryMatchCount?: number
   onClose: () => void
 }
 
@@ -19,6 +21,8 @@ export function DetailSidePanel({
   startupCount = 0,
   totalFunding = 0,
   description,
+  searchQuery = null,
+  categoryMatchCount,
   onClose,
 }: DetailSidePanelProps) {
   const isOpen = type === 'startup' ? !!startup : !!categoryName
@@ -36,6 +40,9 @@ export function DetailSidePanel({
         </button>
       </div>
       <div className="side-panel-body">
+        {searchQuery && (
+          <p className="detail-search-context">Matches query: {searchQuery}</p>
+        )}
         {type === 'startup' && startup && (
           <ul className="detail-list">
             <li>
@@ -72,6 +79,12 @@ export function DetailSidePanel({
         )}
         {type === 'category' && (
           <ul className="detail-list">
+            {searchQuery && categoryMatchCount !== undefined && (
+              <li>
+                <span className="detail-label">Matching query</span>
+                <span>{categoryMatchCount} startups in this category match your query</span>
+              </li>
+            )}
             <li>
               <span className="detail-label">Total Startups</span>
               <span>{startupCount}</span>

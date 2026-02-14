@@ -35,9 +35,9 @@ export function ProductHeader({ onUploadClick }: ProductHeaderProps) {
             type="button"
             className="header-icon-btn"
             onClick={() => setDisplayOpen(!displayOpen)}
-            title="Display options"
+            title="View options"
           >
-            Display ▾
+            View ▾
           </button>
           {displayOpen && (
             <div className="dropdown-menu">

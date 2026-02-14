@@ -2,14 +2,18 @@ import { polygonHull, polygonCentroid } from 'd3-polygon'
 import { curveCatmullRomClosed, line } from 'd3-shape'
 import type { Startup } from '../types'
 import type { HullPolygon } from '../types'
+import type { HierarchyLevel } from '../types'
 import { HULL_EXPANSION } from '../config'
+import { getCategoryIdAtLevel } from '../utils/hierarchy'
+import { MIN_LABEL_COUNT, MIN_LABEL_COUNT_L2, MIN_LABEL_COUNT_L3 } from '../config'
 
-export function computeHulls(startups: Startup[]): HullPolygon[] {
+export function computeHulls(startups: Startup[], level: HierarchyLevel = 2): HullPolygon[] {
   const byCategory = new Map<string, Startup[]>()
   for (const s of startups) {
-    const list = byCategory.get(s.category_id) ?? []
+    const groupId = getCategoryIdAtLevel(s, level)
+    const list = byCategory.get(groupId) ?? []
     list.push(s)
-    byCategory.set(s.category_id, list)
+    byCategory.set(groupId, list)
   }
 
   const hulls: HullPolygon[] = []
@@ -26,6 +30,41 @@ export function computeHulls(startups: Startup[]): HullPolygon[] {
     hulls.push({ categoryId, points: expanded, centroid })
   }
   return hulls
+}
+
+function getMinLabelCount(level: HierarchyLevel): number {
+  if (level === 1) return MIN_LABEL_COUNT
+  if (level === 2) return MIN_LABEL_COUNT_L2
+  return MIN_LABEL_COUNT_L3
+}
+
+export function filterHullsForLabels(hulls: HullPolygon[], startups: Startup[], level: HierarchyLevel): HullPolygon[] {
+  const byCategory = new Map<string, number>()
+  for (const s of startups) {
+    const groupId = getCategoryIdAtLevel(s, level)
+    byCategory.set(groupId, (byCategory.get(groupId) ?? 0) + 1)
+  }
+  const minCount = getMinLabelCount(level)
+  return hulls.filter((h) => (byCategory.get(h.categoryId) ?? 0) >= minCount)
+}
+
+export function computeParentHulls(
+  startups: Startup[],
+  currentHulls: HullPolygon[],
+  activeLevel: HierarchyLevel
+): HullPolygon[] {
+  if (activeLevel === 1) return []
+  const parentLevel = activeLevel === 2 ? 1 : 2
+  const currentCategoryIds = new Set(currentHulls.map((h) => h.categoryId))
+  const parentCategoryIds = new Set<string>()
+  for (const s of startups) {
+    const currentId = getCategoryIdAtLevel(s, activeLevel)
+    if (currentCategoryIds.has(currentId)) {
+      const parentId = getCategoryIdAtLevel(s, parentLevel)
+      parentCategoryIds.add(parentId)
+    }
+  }
+  return computeHulls(startups, parentLevel).filter((h) => parentCategoryIds.has(h.categoryId))
 }
 
 export function hullToPath(hull: HullPolygon): string {

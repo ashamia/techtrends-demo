@@ -3,6 +3,7 @@ import { Modal } from './Modal'
 import {
   parseStartupsCsv,
   parseCategoriesCsv,
+  applyCategoriesToStartups,
   validateStartupsColumns,
   validateCategoriesColumns,
 } from '../data/parse'
@@ -11,7 +12,7 @@ import type { Startup, Category } from '../types'
 interface UploadModalProps {
   isOpen: boolean
   onClose: () => void
-  onLoad: (startups: Startup[], categories: Category[]) => void
+  onLoad: (startups?: Startup[], categories?: Category[]) => void
 }
 
 export function UploadModal({ isOpen, onClose, onLoad }: UploadModalProps) {
@@ -20,23 +21,34 @@ export function UploadModal({ isOpen, onClose, onLoad }: UploadModalProps) {
   const [error, setError] = useState<string | null>(null)
 
   const validateAndLoad = useCallback(async () => {
-    if (!startupsFile || !categoriesFile) return
+    if (!startupsFile && !categoriesFile) return
     setError(null)
     try {
-      const [startupsText, categoriesText] = await Promise.all([
-        startupsFile.text(),
-        categoriesFile.text(),
-      ])
-      if (!validateStartupsColumns(startupsText)) {
-        setError('Startups CSV is missing required columns.')
-        return
+      let startups: Startup[] | undefined
+      let categories: Category[] | undefined
+
+      if (startupsFile) {
+        const startupsText = await startupsFile.text()
+        if (!validateStartupsColumns(startupsText)) {
+          setError('Startups CSV is missing required columns.')
+          return
+        }
+        startups = parseStartupsCsv(startupsText)
       }
-      if (!validateCategoriesColumns(categoriesText)) {
-        setError('Categories CSV is missing required columns.')
-        return
+
+      if (categoriesFile) {
+        const categoriesText = await categoriesFile.text()
+        if (!validateCategoriesColumns(categoriesText)) {
+          setError('Categories CSV is missing required columns.')
+          return
+        }
+        categories = parseCategoriesCsv(categoriesText)
       }
-      const startups = parseStartupsCsv(startupsText)
-      const categories = parseCategoriesCsv(categoriesText)
+
+      if (startups && categories) {
+        applyCategoriesToStartups(startups, categories)
+      }
+
       onLoad(startups, categories)
       setStartupsFile(null)
       setCategoriesFile(null)
@@ -46,7 +58,7 @@ export function UploadModal({ isOpen, onClose, onLoad }: UploadModalProps) {
     }
   }, [startupsFile, categoriesFile, onLoad, onClose])
 
-  const canLoad = startupsFile && categoriesFile && !error
+  const canLoad = (startupsFile || categoriesFile) && !error
   const handleStartupsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0]
     setStartupsFile(f ?? null)
@@ -61,8 +73,9 @@ export function UploadModal({ isOpen, onClose, onLoad }: UploadModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Upload Custom Data">
       <div className="upload-form">
+        <p className="upload-hint">Upload at least one file. Categories alone will update names and descriptions for the current startups.</p>
         <div className="upload-field">
-          <label>Startups CSV (required)</label>
+          <label>Startups CSV (optional)</label>
           <input
             type="file"
             accept=".csv"
@@ -71,7 +84,7 @@ export function UploadModal({ isOpen, onClose, onLoad }: UploadModalProps) {
           {startupsFile && <span className="file-name">{startupsFile.name}</span>}
         </div>
         <div className="upload-field">
-          <label>Categories CSV (required)</label>
+          <label>Categories CSV (optional — upload to replace category names and descriptions)</label>
           <input
             type="file"
             accept=".csv"
