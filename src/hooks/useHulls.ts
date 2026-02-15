@@ -6,6 +6,7 @@ import type { HierarchyLevel } from '../types'
 import { HULL_EXPANSION } from '../config'
 import { getCategoryIdAtLevel } from '../utils/hierarchy'
 import { MIN_LABEL_COUNT, MIN_LABEL_COUNT_L2, MIN_LABEL_COUNT_L3 } from '../config'
+import { LABEL_ZOOM_BASE_COUNT, LABEL_ZOOM_ADD_PER_LEVEL } from '../config'
 
 export function computeHulls(startups: Startup[], level: HierarchyLevel = 2): HullPolygon[] {
   const byCategory = new Map<string, Startup[]>()
@@ -38,6 +39,17 @@ function getMinLabelCount(level: HierarchyLevel): number {
   return MIN_LABEL_COUNT_L3
 }
 
+function getHullArea(hull: HullPolygon): number {
+  let area = 0
+  const n = hull.points.length
+  for (let i = 0; i < n; i++) {
+    const j = (i + 1) % n
+    area += hull.points[i]![0] * hull.points[j]![1]
+    area -= hull.points[j]![0] * hull.points[i]![1]
+  }
+  return Math.abs(area) / 2
+}
+
 export function filterHullsForLabels(hulls: HullPolygon[], startups: Startup[], level: HierarchyLevel): HullPolygon[] {
   const byCategory = new Map<string, number>()
   for (const s of startups) {
@@ -46,6 +58,16 @@ export function filterHullsForLabels(hulls: HullPolygon[], startups: Startup[], 
   }
   const minCount = getMinLabelCount(level)
   return hulls.filter((h) => (byCategory.get(h.categoryId) ?? 0) >= minCount)
+}
+
+export function selectHullsForLabelsAtZoom(hulls: HullPolygon[], zoomK: number): HullPolygon[] {
+  const maxCount = Math.min(
+    hulls.length,
+    LABEL_ZOOM_BASE_COUNT + Math.floor(zoomK) * LABEL_ZOOM_ADD_PER_LEVEL
+  )
+  const withArea = hulls.map((h) => ({ hull: h, area: getHullArea(h) }))
+  withArea.sort((a, b) => b.area - a.area)
+  return withArea.slice(0, maxCount).map((x) => x.hull)
 }
 
 export function computeParentHulls(

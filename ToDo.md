@@ -1,2 +1,1 @@
-
-- add pricing 
+- add a trends view 

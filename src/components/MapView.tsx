@@ -3,10 +3,10 @@ import { zoom } from 'd3-zoom'
 import { select } from 'd3-selection'
 import { quadtree } from 'd3-quadtree'
 import { polygonContains } from 'd3-polygon'
-import { computeHulls, hullToPath, filterHullsForLabels, computeParentHulls } from '../hooks/useHulls'
+import { computeHulls, hullToPath, filterHullsForLabels, selectHullsForLabelsAtZoom, computeParentHulls } from '../hooks/useHulls'
 import { buildColorScale } from '../utils/colors'
 import { getCategoryIdAtLevel } from '../utils/hierarchy'
-import { placeLabelsBesideHulls, getLabelEdgePoint, routeLeaderLine, computeBufferedHull } from '../utils/labelPlacement'
+import { placeLabelsInsideHulls } from '../utils/labelPlacement'
 import { wrapLabelText } from '../utils/textWrap'
 import {
   DOT_RADIUS_HOVER, DOT_RADIUS_MATCH, DOT_RADIUS_NON_MATCH,
@@ -15,14 +15,14 @@ import {
   LABEL_FONT_SIZE, LABEL_FONT_SIZE_L1, LABEL_FONT_SIZE_L2, LABEL_FONT_SIZE_L3,
   LABEL_MIN_WIDTH, LABEL_MIN_WIDTH_L1, LABEL_MIN_WIDTH_L2, LABEL_MIN_WIDTH_L3,
   LABEL_MAX_HEIGHT, LABEL_MAX_HEIGHT_L1, LABEL_MAX_HEIGHT_L2, LABEL_MAX_HEIGHT_L3,
-  LABEL_PILL_OPACITY, LABEL_PILL_BG_COLOR, LABEL_PILL_BORDER_COLOR,
+  LABEL_PILL_BG_COLOR, LABEL_PILL_BORDER_COLOR, LABEL_PILL_BORDER_WIDTH,
   LABEL_MAX_WIDTH, LABEL_LINE_HEIGHT_RATIO,
-  HULL_BUFFER,
-  LABEL_LEADER_LINE_COLOR, LABEL_LEADER_LINE_STROKE_WIDTH, LABEL_VIEWPORT_MARGIN,
+  LABEL_VIEWPORT_MARGIN,
+  LABEL_BG_OPACITY_INSIDE_HULL,
   HULL_OPACITY, HULL_OPACITY_DIMMED, HULL_OPACITY_PARENT,
   HULL_LEVEL_TRANSITION_MS,
 } from '../config'
-import type { Startup, Category, HierarchyLevel } from '../types'
+import type { Startup, Category, HierarchyLevel, HullPolygon } from '../types'
 import type { ZoomTransform } from 'd3-zoom'
 import type { MatchInfo } from '../utils/search'
 
@@ -109,7 +109,10 @@ export function MapView({
   const categoryIdsAtLevel = new Set(startups.map((s) => getCategoryIdAtLevel(s, activeLevel)))
   const hulls = computeHulls(startups, activeLevel)
   const parentHulls = computeParentHulls(startups, hulls, activeLevel)
-  const hullsForLabels = filterHullsForLabels(hulls, startups, activeLevel)
+  const hullsForLabels = useMemo(
+    () => selectHullsForLabelsAtZoom(filterHullsForLabels(hulls, startups, activeLevel), transform.k),
+    [hulls, startups, activeLevel, transform.k]
+  )
   const allCategoryIds = new Set([
     ...categoryIdsAtLevel,
     ...parentHulls.map((h) => h.categoryId),
@@ -144,7 +147,7 @@ export function MapView({
 
   const placedLabels = useMemo(() => {
     const labelDims = labelDataForPlacement.map((item) => ({ width: item.width, height: item.height }))
-    return placeLabelsBesideHulls(hullsForLabels, labelDims, 1)
+    return placeLabelsInsideHulls(hullsForLabels, labelDims, 1)
   }, [hullsForLabels, labelDataForPlacement])
 
   useEffect(() => {
@@ -257,6 +260,31 @@ export function MapView({
     draw()
   }, [startups, transform, bounds, colorScale, hoveredId, selectedId, width, height, searchActive, matchIds, activeLevel])
 
+  const findHullAtPoint = useCallback((dataX: number, dataY: number) => {
+    const containing: { hull: HullPolygon; area: number }[] = []
+    const hullArea = (h: { points: [number, number][] }) => {
+      let a = 0
+      const n = h.points.length
+      for (let i = 0; i < n; i++) {
+        const j = (i + 1) % n
+        a += h.points[i]![0] * h.points[j]![1] - h.points[j]![0] * h.points[i]![1]
+      }
+      return Math.abs(a) / 2
+    }
+    for (const h of hulls) {
+      if (polygonContains(h.points, [dataX, dataY])) containing.push({ hull: h, area: hullArea(h) })
+    }
+    for (const h of parentHulls) {
+      if (polygonContains(h.points, [dataX, dataY])) containing.push({ hull: h, area: hullArea(h) })
+    }
+    for (const h of outgoingHulls) {
+      if (polygonContains(h.points, [dataX, dataY])) containing.push({ hull: h, area: hullArea(h) })
+    }
+    if (containing.length === 0) return null
+    containing.sort((a, b) => a.area - b.area)
+    return containing[0]!.hull
+  }, [hulls, parentHulls, outgoingHulls])
+
   const findNearestStartup = useCallback(
     (dataX: number, dataY: number): Startup | null => {
       if (startups.length === 0) return null
@@ -279,25 +307,30 @@ export function MapView({
       const canvas = canvasRef.current
       if (!canvas) return
       const rect = canvas.getBoundingClientRect()
-      const [dataX, dataY] = transform.invert([
-        e.clientX - rect.left,
-        e.clientY - rect.top,
-      ])
+      const px = e.clientX - rect.left
+      const py = e.clientY - rect.top
+      const [dataX, dataY] = transform.invert([px, py])
       const found = findNearestStartup(dataX, dataY)
       onHoverChange(found?.id ?? null)
       if (searchActive && found && matchInfo.has(found.id)) {
         const info = matchInfo.get(found.id)!
         const matchedOnStr = info.matchedOn.join(', ')
         setTooltip({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top,
+          x: px,
+          y: py,
           text: `Match strength: ${info.strength.charAt(0).toUpperCase() + info.strength.slice(1)}\nMatched on: ${matchedOnStr}`,
         })
       } else {
-        setTooltip(null)
+        const hullAt = findHullAtPoint(dataX, dataY)
+        if (hullAt) {
+          const name = categoryNameById.get(hullAt.categoryId) ?? hullAt.categoryId
+          setTooltip({ x: px, y: py, text: name })
+        } else {
+          setTooltip(null)
+        }
       }
     },
-    [transform, findNearestStartup, onHoverChange, searchActive, matchInfo]
+    [transform, findNearestStartup, findHullAtPoint, onHoverChange, searchActive, matchInfo, categoryNameById]
   )
 
   const handlePointerLeave = useCallback(() => {
@@ -338,7 +371,7 @@ export function MapView({
       className="map-container"
       style={{ width, height }}
     >
-      {tooltip && searchActive && (
+      {tooltip && (
         <div
           className="map-tooltip"
           style={{
@@ -457,8 +490,7 @@ export function MapView({
               return { hull: h, lines, labelWidth, outHeight }
             })
             const outDims = outItems.map((o) => ({ width: o.labelWidth, height: o.outHeight }))
-            const outPlaced = placeLabelsBesideHulls(outgoingLabels, outDims, k)
-            const dashArray = `${4 * scale},${4 * scale}`
+            const outPlaced = placeLabelsInsideHulls(outgoingLabels, outDims, k)
             const outMargin = LABEL_VIEWPORT_MARGIN / k
             const outVisibleMinX = Math.min((-transform.x) / k, (width - transform.x) / k) - outMargin
             const outVisibleMaxX = Math.max((-transform.x) / k, (width - transform.x) / k) + outMargin
@@ -475,31 +507,15 @@ export function MapView({
               <g style={{ opacity: fadeOut ? 0 : 1, transition: `opacity ${HULL_LEVEL_TRANSITION_MS}ms ease`, pointerEvents: 'none' }}>
                 {outVisibleIndices.map((i) => {
                   const item = outItems[i]!
-                  const { rect, lineAnchor } = outPlaced[i]!
+                  const { rect } = outPlaced[i]!
                   const halfW = item.labelWidth / 2
                   const halfH = item.outHeight / 2
                   const gx = rect.x + rect.width / 2
                   const gy = rect.y + rect.height / 2
-                  const outBufferedHulls = outgoingLabels.map((h) => computeBufferedHull(h, HULL_BUFFER, k))
-                  const renderRect = { x: gx - halfW, y: gy - halfH, width: item.labelWidth, height: item.outHeight }
-                  const labelEdge = getLabelEdgePoint(renderRect, lineAnchor)
-                  const lineRoute = routeLeaderLine(labelEdge, lineAnchor, renderRect, outBufferedHulls, i)
-                  const pathD = lineRoute.length >= 2
-                    ? `M ${lineRoute[0]!.join(',')} ` + lineRoute.slice(1).map((p) => `L ${p![0]},${p![1]}`).join(' ')
-                    : ''
                   return (
                     <g key={`out-label-${item.hull.categoryId}`}>
-                      {pathD && (
-                      <path
-                        d={pathD}
-                        stroke={LABEL_LEADER_LINE_COLOR}
-                        strokeWidth={Math.max(0.25, LABEL_LEADER_LINE_STROKE_WIDTH / k)}
-                        strokeDasharray={dashArray}
-                        fill="none"
-                      />
-                      )}
                       <g transform={`translate(${gx},${gy})`}>
-                        <rect x={-halfW} y={-halfH} width={item.labelWidth} height={item.outHeight} rx={rx} fill={LABEL_PILL_BG_COLOR} fillOpacity={LABEL_PILL_OPACITY} stroke={LABEL_PILL_BORDER_COLOR} />
+                        <rect x={-halfW} y={-halfH} width={item.labelWidth} height={item.outHeight} rx={rx} fill={LABEL_PILL_BG_COLOR} fillOpacity={LABEL_BG_OPACITY_INSIDE_HULL} stroke={LABEL_PILL_BORDER_COLOR} strokeWidth={LABEL_PILL_BORDER_WIDTH} />
                         <text textAnchor="middle" fontSize={outFontSize} x={0} y={-((item.lines.length - 1) / 2) * outLineHeight}>
                           {item.lines.map((line, lineIdx) => (
                             <tspan key={lineIdx} x={0} dy={lineIdx === 0 ? 0 : outLineHeight}>
@@ -531,9 +547,6 @@ export function MapView({
               renderHeight: item.height * scale,
             }))
 
-            const dashArray = `${4 * scale},${4 * scale}`
-            const bufferedHulls = hullsForLabels.map((h) => computeBufferedHull(h, HULL_BUFFER, 1))
-
             const visibleIndices: number[] = []
             for (let i = 0; i < labelItems.length; i++) {
               const { rect } = placedLabels[i]!
@@ -547,17 +560,11 @@ export function MapView({
               <g style={outgoingLabels.length > 0 ? { opacity: fadeOut ? 1 : 0, transition: `opacity ${HULL_LEVEL_TRANSITION_MS}ms ease` } : undefined}>
                 {visibleIndices.map((i) => {
                   const item = labelItems[i]!
-                  const { rect, lineAnchor } = placedLabels[i]!
+                  const { rect } = placedLabels[i]!
                   const halfW = item.renderWidth / 2
                   const halfH = item.renderHeight / 2
                   const gx = rect.x + rect.width / 2
                   const gy = rect.y + rect.height / 2
-                  const renderRect = { x: gx - halfW, y: gy - halfH, width: item.renderWidth, height: item.renderHeight }
-                  const labelEdge = getLabelEdgePoint(renderRect, lineAnchor)
-                  const lineRoute = routeLeaderLine(labelEdge, lineAnchor, renderRect, bufferedHulls, i)
-                  const pathD = lineRoute.length >= 2
-                    ? `M ${lineRoute[0]!.join(',')} ` + lineRoute.slice(1).map((p) => `L ${p![0]},${p![1]}`).join(' ')
-                    : ''
                   const rx = Math.max(2, 6 * scale)
                   return (
                     <g
@@ -568,15 +575,6 @@ export function MapView({
                         onCategoryClick(item.hull.categoryId, categoryNameById.get(item.hull.categoryId) ?? item.hull.categoryId)
                       }}
                     >
-                      {pathD && (
-                      <path
-                        d={pathD}
-                        stroke={LABEL_LEADER_LINE_COLOR}
-                        strokeWidth={Math.max(0.25, LABEL_LEADER_LINE_STROKE_WIDTH / k)}
-                        strokeDasharray={dashArray}
-                        fill="none"
-                      />
-                      )}
                       <g transform={`translate(${gx},${gy})`}>
                         <rect
                           x={-halfW}
@@ -585,8 +583,9 @@ export function MapView({
                           height={item.renderHeight}
                           rx={rx}
                           fill={LABEL_PILL_BG_COLOR}
-                          fillOpacity={LABEL_PILL_OPACITY}
+                          fillOpacity={LABEL_BG_OPACITY_INSIDE_HULL}
                           stroke={LABEL_PILL_BORDER_COLOR}
+                          strokeWidth={LABEL_PILL_BORDER_WIDTH}
                         />
                         <text
                           textAnchor="middle"
