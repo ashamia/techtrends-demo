@@ -6,7 +6,7 @@ import { polygonContains } from 'd3-polygon'
 import { computeHulls, hullToPath, filterHullsForLabels, computeParentHulls } from '../hooks/useHulls'
 import { buildColorScale } from '../utils/colors'
 import { getCategoryIdAtLevel } from '../utils/hierarchy'
-import { placeLabelsBesideHulls } from '../utils/labelPlacement'
+import { placeLabelsBesideHulls, getLabelEdgePoint, routeLeaderLine, computeBufferedHull } from '../utils/labelPlacement'
 import { wrapLabelText } from '../utils/textWrap'
 import {
   DOT_RADIUS_HOVER, DOT_RADIUS_MATCH, DOT_RADIUS_NON_MATCH,
@@ -17,6 +17,7 @@ import {
   LABEL_MAX_HEIGHT, LABEL_MAX_HEIGHT_L1, LABEL_MAX_HEIGHT_L2, LABEL_MAX_HEIGHT_L3,
   LABEL_PILL_OPACITY, LABEL_PILL_BG_COLOR, LABEL_PILL_BORDER_COLOR,
   LABEL_MAX_WIDTH, LABEL_LINE_HEIGHT_RATIO,
+  HULL_BUFFER,
   LABEL_LEADER_LINE_COLOR, LABEL_LEADER_LINE_STROKE_WIDTH, LABEL_VIEWPORT_MARGIN,
   HULL_OPACITY, HULL_OPACITY_DIMMED, HULL_OPACITY_PARENT,
   HULL_LEVEL_TRANSITION_MS,
@@ -192,17 +193,15 @@ export function MapView({
     if (!ctx) return
 
     const t = transform
-    const pad = 100
 
     const draw = () => {
       ctx.save()
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+      ctx.clearRect(0, 0, width, height)
+      ctx.restore()
+
+      ctx.save()
       ctx.setTransform(t.k, 0, 0, t.k, t.x, t.y)
-      ctx.clearRect(
-        bounds.minX - pad,
-        bounds.minY - pad,
-        bounds.maxX - bounds.minX + pad * 2,
-        bounds.maxY - bounds.minY + pad * 2
-      )
 
       for (const s of startups) {
         const isMatch = searchActive && matchIds.has(s.id)
@@ -476,23 +475,29 @@ export function MapView({
               <g style={{ opacity: fadeOut ? 0 : 1, transition: `opacity ${HULL_LEVEL_TRANSITION_MS}ms ease`, pointerEvents: 'none' }}>
                 {outVisibleIndices.map((i) => {
                   const item = outItems[i]!
-                  const { rect, hullCentroid } = outPlaced[i]!
+                  const { rect, lineAnchor } = outPlaced[i]!
                   const halfW = item.labelWidth / 2
                   const halfH = item.outHeight / 2
                   const gx = rect.x + rect.width / 2
                   const gy = rect.y + rect.height / 2
+                  const outBufferedHulls = outgoingLabels.map((h) => computeBufferedHull(h, HULL_BUFFER, k))
+                  const renderRect = { x: gx - halfW, y: gy - halfH, width: item.labelWidth, height: item.outHeight }
+                  const labelEdge = getLabelEdgePoint(renderRect, lineAnchor)
+                  const lineRoute = routeLeaderLine(labelEdge, lineAnchor, renderRect, outBufferedHulls, i)
+                  const pathD = lineRoute.length >= 2
+                    ? `M ${lineRoute[0]!.join(',')} ` + lineRoute.slice(1).map((p) => `L ${p![0]},${p![1]}`).join(' ')
+                    : ''
                   return (
                     <g key={`out-label-${item.hull.categoryId}`}>
-                      <line
-                        x1={hullCentroid[0]}
-                        y1={hullCentroid[1]}
-                        x2={gx}
-                        y2={gy}
+                      {pathD && (
+                      <path
+                        d={pathD}
                         stroke={LABEL_LEADER_LINE_COLOR}
-                        strokeWidth={LABEL_LEADER_LINE_STROKE_WIDTH / k}
+                        strokeWidth={Math.max(0.25, LABEL_LEADER_LINE_STROKE_WIDTH / k)}
                         strokeDasharray={dashArray}
                         fill="none"
                       />
+                      )}
                       <g transform={`translate(${gx},${gy})`}>
                         <rect x={-halfW} y={-halfH} width={item.labelWidth} height={item.outHeight} rx={rx} fill={LABEL_PILL_BG_COLOR} fillOpacity={LABEL_PILL_OPACITY} stroke={LABEL_PILL_BORDER_COLOR} />
                         <text textAnchor="middle" fontSize={outFontSize} x={0} y={-((item.lines.length - 1) / 2) * outLineHeight}>
@@ -527,6 +532,7 @@ export function MapView({
             }))
 
             const dashArray = `${4 * scale},${4 * scale}`
+            const bufferedHulls = hullsForLabels.map((h) => computeBufferedHull(h, HULL_BUFFER, 1))
 
             const visibleIndices: number[] = []
             for (let i = 0; i < labelItems.length; i++) {
@@ -541,11 +547,17 @@ export function MapView({
               <g style={outgoingLabels.length > 0 ? { opacity: fadeOut ? 1 : 0, transition: `opacity ${HULL_LEVEL_TRANSITION_MS}ms ease` } : undefined}>
                 {visibleIndices.map((i) => {
                   const item = labelItems[i]!
-                  const { rect, hullCentroid } = placedLabels[i]!
+                  const { rect, lineAnchor } = placedLabels[i]!
                   const halfW = item.renderWidth / 2
                   const halfH = item.renderHeight / 2
                   const gx = rect.x + rect.width / 2
                   const gy = rect.y + rect.height / 2
+                  const renderRect = { x: gx - halfW, y: gy - halfH, width: item.renderWidth, height: item.renderHeight }
+                  const labelEdge = getLabelEdgePoint(renderRect, lineAnchor)
+                  const lineRoute = routeLeaderLine(labelEdge, lineAnchor, renderRect, bufferedHulls, i)
+                  const pathD = lineRoute.length >= 2
+                    ? `M ${lineRoute[0]!.join(',')} ` + lineRoute.slice(1).map((p) => `L ${p![0]},${p![1]}`).join(' ')
+                    : ''
                   const rx = Math.max(2, 6 * scale)
                   return (
                     <g
@@ -556,16 +568,15 @@ export function MapView({
                         onCategoryClick(item.hull.categoryId, categoryNameById.get(item.hull.categoryId) ?? item.hull.categoryId)
                       }}
                     >
-                      <line
-                        x1={hullCentroid[0]}
-                        y1={hullCentroid[1]}
-                        x2={gx}
-                        y2={gy}
+                      {pathD && (
+                      <path
+                        d={pathD}
                         stroke={LABEL_LEADER_LINE_COLOR}
-                        strokeWidth={LABEL_LEADER_LINE_STROKE_WIDTH / k}
+                        strokeWidth={Math.max(0.25, LABEL_LEADER_LINE_STROKE_WIDTH / k)}
                         strokeDasharray={dashArray}
                         fill="none"
                       />
+                      )}
                       <g transform={`translate(${gx},${gy})`}>
                         <rect
                           x={-halfW}
