@@ -1,6 +1,12 @@
 export const DEFAULT_CATEGORIES_FILE_NAME = 'elbit-categories.csv'
 export const DEFAULT_CATEGORIES_PATH = `${import.meta.env.BASE_URL}elbit-categories.csv`
 
+export const DEFAULT_TRENDS_FILE_NAME = 'defensetech-trends.csv'
+export const DEFAULT_TRENDS_PATH = `${import.meta.env.BASE_URL}${DEFAULT_TRENDS_FILE_NAME}`
+
+export const DEFAULT_TREND_VENDORS_FILE_NAME = 'defensetech-trend-vendors.csv'
+export const DEFAULT_TREND_VENDORS_PATH = `${import.meta.env.BASE_URL}${DEFAULT_TREND_VENDORS_FILE_NAME}`
+
 export const ZOOM_L1_TO_L2 = 1.3
 export const ZOOM_L2_TO_L1 = 1.1
 export const ZOOM_L2_TO_L3 = 2.5

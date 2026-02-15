@@ -1,0 +1,19 @@
+id,name,detection_date,description,category
+t1,Autonomous Swarm Orchestration Platforms,2024-10-01,"Software to coordinate large fleets of UAVs/UGVs/USVs with decentralized control, mission planning, and deconfliction in contested environments.",Emerging Technologies
+t2,Space Domain Awareness Analytics,2024-10-15,"Commercial analytics that detect, classify, and predict objects and behaviors in orbit (satellites, debris, proximity ops) for defense and operators.",Emerging Technologies
+t3,Tactical Edge AI Infrastructure,2024-10-29,"Deployable compute and MLOps stacks for running inference at the edge under bandwidth, power, and latency constraints.",Emerging Technologies
+t4,Counter-Drone Electronic Warfare Platforms,2024-11-12,"RF sensing, identification, and software-defined electronic attack/control layers to detect and defeat low-cost drone threats.",Emerging Technologies
+t5,AI Target Recognition APIs,2024-11-26,"Computer-vision and multi-sensor fusion models for ISR feeds (EO/IR/SAR) enabling detection, tracking, and cueing.",Emerging Technologies
+t6,Resilient Battlefield Mesh Networking,2024-12-10,"Self-healing comms networks (mesh, LEO backhaul, MANET) designed for GPS-denied and jammed environments.",Emerging Technologies
+t7,Hypersonic Materials & Thermal Protection,2024-12-24,"Advanced materials for extreme heat, ablation, and structural loads supporting hypersonic and high-speed aerospace systems.",Emerging Technologies
+t8,Synthetic Data for Autonomy Training,2025-01-07,Simulation-driven synthetic data generation and labeling pipelines to train perception and autonomy models without scarce real-world data.,Emerging Technologies
+t9,AI-Native Command & Control Doctrine,2024-11-12,"A shift toward AI-assisted planning and decision-support for C2, driving demand for data fusion, workflow automation, and human-in-the-loop systems across domains.",New Themes
+t10,"Software-Defined, Rapidly Upgradable Defense Systems",2024-11-26,"Demand for modular, software-first architectures that can be updated on short cycles (weeks, not years), accelerating open interfaces, digital twins, and continuous integration.",New Themes
+t11,Industrial Sovereignty & Trusted Supply Chains,2024-12-10,"Policy and procurement emphasis on domestic/ally production, secure components, and provenance, influencing cyber, space, comms, semiconductors, and critical materials.",New Themes
+t12,Autonomous Tactical Drones,2024-12-10,Category moving from early traction into scaling as procurement shifts from pilots to repeatable programs and larger production runs.,Market Phases
+t13,Counter-UAS Systems,2024-12-24,"Category progressing from scaling to maturing with clearer doctrine, standardized requirements, and growing vendor consolidation.",Market Phases
+t14,Space Domain Awareness (SDA) Platforms,2025-01-07,"Category moving into scaling with more operators integrating continuous monitoring, analytics, and alerting into mission operations.",Market Phases
+t15,Critical Infrastructure Cyber Defense,2025-01-21,"Category maturing as compliance and threat pressure drive broader adoption, platformization, and integration with primes and MSSPs.",Market Phases
+t16,Satellite Imaging & ISR Analytics,2025-02-04,"Category scaling with higher revisit rates, better analytics, and expanded defense demand for persistent ISR and change detection.",Market Phases
+t17,Battlefield Simulation & Digital Twins,2025-02-18,"Category moving from new to early traction as training, mission rehearsal, and procurement workflows adopt simulation-driven decisioning.",Market Phases
+t18,Secure Tactical Communications,2025-03-04,"Category shifting toward consolidation as interoperability requirements and procurement bundling favor fewer, larger integrated vendors.",Market Phases

@@ -12,10 +12,13 @@ import { PageHeader } from './components/PageHeader'
 import { MetricsPanel } from './components/MetricsPanel'
 import { FiltersPanel } from './components/FiltersPanel'
 import { MapView } from './components/MapView'
+import { TrendsView } from './components/TrendsView'
 import { DetailSidePanel } from './components/DetailSidePanel'
 import { UploadModal } from './components/UploadModal'
+import { parseTrendsCsv, parseTrendVendorsCsv } from './data/parseTrends'
+import type { Trend, TrendVendor } from './types/trends'
 import type { Startup, Category, FilterState } from './types'
-import { MAX_STARTUPS, PADDING_PERCENT, GRID_OPACITY, GRID_RGB, GRID_SIZE, HULL_OPACITY_HOVER, HULL_OPACITY_DIM_CLASS, DEFAULT_CATEGORIES_PATH } from './config'
+import { MAX_STARTUPS, PADDING_PERCENT, GRID_OPACITY, GRID_RGB, GRID_SIZE, HULL_OPACITY_HOVER, HULL_OPACITY_DIM_CLASS, DEFAULT_CATEGORIES_PATH, DEFAULT_TRENDS_PATH, DEFAULT_TREND_VENDORS_PATH } from './config'
 import { FUNDING_BUCKETS } from './config'
 
 const appStyle = {
@@ -94,6 +97,9 @@ export default function App() {
   const [mapSize, setMapSize] = useState({ width: 800, height: 600 })
   const [searchQuery, setSearchQuery] = useState('')
   const [appliedSearch, setAppliedSearch] = useState<string | null>(null)
+  const [currentView, setCurrentView] = useState<'market-map' | 'trends'>('market-map')
+  const [trends, setTrends] = useState<Trend[]>([])
+  const [vendorsByTrend, setVendorsByTrend] = useState<Map<string, TrendVendor[]>>(new Map())
 
   const filteredStartups = useFilteredStartups(startups, filter ?? ({} as FilterState))
   const searchActive = appliedSearch !== null && appliedSearch.trim().length > 0
@@ -187,6 +193,27 @@ export default function App() {
   useEffect(() => {
     loadDemo()
   }, [loadDemo])
+
+  useEffect(() => {
+    let cancelled = false
+    Promise.all([fetch(DEFAULT_TRENDS_PATH), fetch(DEFAULT_TREND_VENDORS_PATH)])
+      .then(([tRes, vRes]) => Promise.all([tRes.text(), vRes.text()]))
+      .then(([tText, vText]) => {
+        if (cancelled) return
+        const trendsData = parseTrendsCsv(tText)
+        const vendorsData = parseTrendVendorsCsv(vText)
+        const byTrend = new Map<string, TrendVendor[]>()
+        for (const v of vendorsData) {
+          const list = byTrend.get(v.trendId) ?? []
+          list.push(v)
+          byTrend.set(v.trendId, list)
+        }
+        setTrends(trendsData)
+        setVendorsByTrend(byTrend)
+      })
+      .catch(() => {})
+    return () => { cancelled = true }
+  }, [])
 
   useEffect(() => {
     const el = document.getElementById('map-wrapper')
@@ -338,26 +365,33 @@ export default function App() {
 
   return (
     <div className="app" style={appStyle}>
-      <ProductHeader onUploadClick={() => setUploadOpen(true)} />
+      <ProductHeader
+        onUploadClick={() => setUploadOpen(true)}
+        currentView={currentView}
+        onViewChange={setCurrentView}
+      />
       {warnStartups && (
         <div className="warning-banner">
           Dataset exceeds {MAX_STARTUPS} startups. Performance may be affected.
         </div>
       )}
-      <PageHeader
-        startupCount={filteredStartups.length}
-        categoryCount={new Set(filteredStartups.map((s) => s.category_id)).size}
-        searchActive={searchActive}
-        searchQuery={searchQuery}
-        matchCount={matchingStartups.length}
-        matchCategoryCount={new Set(matchingStartups.map((s) => s.category_id)).size}
-        onSearchQueryChange={setSearchQuery}
-        onSearch={handleSearch}
-        onClearSearch={handleClearSearch}
-        onResetDemo={loadDemo}
-        onFitToView={handleFitToView}
-        activeLevel={activeLevel}
-      />
+      {currentView === 'market-map' && (
+        <PageHeader
+          startupCount={filteredStartups.length}
+          categoryCount={new Set(filteredStartups.map((s) => s.category_id)).size}
+          searchActive={searchActive}
+          searchQuery={searchQuery}
+          matchCount={matchingStartups.length}
+          matchCategoryCount={new Set(matchingStartups.map((s) => s.category_id)).size}
+          onSearchQueryChange={setSearchQuery}
+          onSearch={handleSearch}
+          onClearSearch={handleClearSearch}
+          onResetDemo={loadDemo}
+          onFitToView={handleFitToView}
+          activeLevel={activeLevel}
+        />
+      )}
+      {currentView === 'market-map' && (
       <div className="main">
         <aside className="sidebar">
           <FiltersPanel
@@ -449,6 +483,12 @@ export default function App() {
           }}
         />
       </div>
+      )}
+      {currentView === 'trends' && (
+        <div className="trends-view-wrap">
+          <TrendsView trends={trends} vendorsByTrend={vendorsByTrend} />
+        </div>
+      )}
       <UploadModal
         isOpen={uploadOpen}
         onClose={() => setUploadOpen(false)}

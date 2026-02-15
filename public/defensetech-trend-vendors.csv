@@ -1,0 +1,37 @@
+trend_id,vendor_name,year_founded,funding_to_date,hq_location,url
+t1,RavenForge Labs,2017,98900000,"Paris, France",https://ravenforge-labs.com
+t1,QuartzGrid Defense,2016,12100000,"Warsaw, Poland",https://quartzgrid-defense.io
+t2,ArcGrid Analytics,2016,99500000,"Paris, France",https://arcgrid-analytics.io
+t2,QuartzGrid Ops,2022,7800000,"Austin, USA",https://quartzgrid-ops.io
+t3,BastionOne Analytics,2018,65800000,"Seattle, USA",https://bastionone-analytics.io
+t3,VectorGrid Defense,2021,13400000,"Berlin, Germany",https://vectorgrid-defense.io
+t4,VigilForge Edge,2022,93700000,"Tallinn, Estonia",https://vigilforge-edge.com
+t4,StrataX Dynamics,2019,11600000,"Seattle, USA",https://stratax-dynamics.com
+t5,RavenForge Networks,2017,15900000,"Warsaw, Poland",https://ravenforge-networks.io
+t5,RavenForge Analytics,2016,115500000,"Berlin, Germany",https://ravenforge-analytics.com
+t6,RavenOne Ops,2023,70400000,"Tallinn, Estonia",https://ravenone-ops.io
+t6,OrionForge Systems,2016,88200000,"Seattle, USA",https://orionforge-systems.com
+t7,AtlasForge AI,2016,112900000,"Oslo, Norway",https://atlasforge-ai.io
+t7,VigilForge Labs,2019,92600000,"London, UK",https://vigilforge-labs.io
+t8,IronForge Systems,2018,55000000,"San Diego, USA",https://ironforge-systems.io
+t8,PulseOne Analytics,2021,82500000,"Amsterdam, Netherlands",https://pulseone-analytics.io
+t9,SableX Dynamics,2019,79700000,"Tel Aviv, Israel",https://sablex-dynamics.com
+t9,QuartzOne Networks,2016,19100000,"Oslo, Norway",https://quartzone-networks.com
+t10,SableGrid Ops,2016,55800000,"Amsterdam, Netherlands",https://sablegrid-ops.com
+t10,Iron Works,2022,9300000,"Berlin, Germany",https://iron-works.io
+t11,Drift AI,2016,14000000,"London, UK",https://drift-ai.io
+t11,Strata Systems,2019,74400000,"London, UK",https://strata-systems.com
+t12,StrataOne Works,2017,15600000,"Helsinki, Finland",https://strataone-works.com
+t12,CipherOne Systems,2018,14000000,"Boston, USA",https://cipherone-systems.com
+t13,CipherX Edge,2016,26200000,"Toronto, Canada",https://cipherx-edge.com
+t13,SableGrid Labs,2020,117400000,"Berlin, Germany",https://sablegrid-labs.com
+t14,SpectraX AI,2019,64800000,"Toronto, Canada",https://spectrax-ai.com
+t14,ArcX Defense,2022,89300000,"Austin, USA",https://arcx-defense.io
+t15,SpectraOne Labs,2016,95200000,"Helsinki, Finland",https://spectraone-labs.com
+t15,HeliosGrid AI,2023,97400000,"Oslo, Norway",https://heliosgrid-ai.com
+t16,Orion Defense,2023,25200000,"Zurich, Switzerland",https://orion-defense.com
+t16,Vigil Works,2021,96300000,"Berlin, Germany",https://vigil-works.io
+t17,IronX Works,2018,53200000,"Boston, USA",https://ironx-works.io
+t17,KestrelX Labs,2018,71700000,"Tallinn, Estonia",https://kestrelx-labs.io
+t18,VigilForge AI,2018,66700000,"London, UK",https://vigilforge-ai.io
+t18,SentinelWave Systems,2018,53100000,"Zurich, Switzerland",https://sentinelwave-systems.io

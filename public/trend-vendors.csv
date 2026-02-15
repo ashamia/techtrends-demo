@@ -1,0 +1,14 @@
+trend_id,vendor_name,year_founded,funding_to_date,hq_location,url
+t1,SecureAI Defense,2020,12500000,"San Francisco, USA",https://secureai-defense.io
+t1,CypherNet Systems,2019,8500000,"Tel Aviv, Israel",https://cyphernet.io
+t1,NeuralGuard,2021,4200000,"London, UK",https://neuralguard.com
+t2,EcoDrone Tech,2018,6200000,"Berlin, Germany",https://ecodrone.io
+t2,GreenEdge Defense,2022,3100000,"Austin, USA",https://greenedge.io
+t3,Battlefield Edge,2019,15800000,"Boston, USA",https://battlefieldedge.com
+t3,SensorFlow,2020,7200000,"Munich, Germany",https://sensorflow.io
+t4,SupplyVault,2017,22000000,"Chicago, USA",https://supplyvault.io
+t4,ChainResilience,2021,5800000,"Singapore",https://chainresilience.com
+t5,SwarmLogic,2020,12500000,"Tel Aviv, Israel",https://swarmlogic.io
+t5,Coordinated Systems,2019,9200000,"Seattle, USA",https://coordinated-sys.io
+t6,PostQuantum Labs,2021,6800000,"Zurich, Switzerland",https://postquantum.io
+t6,CipherFuture,2020,4500000,"Ottawa, Canada",https://cipherfuture.io

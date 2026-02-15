@@ -1,11 +1,15 @@
 import { useState, useRef, useEffect } from 'react'
 import { PricingModal } from './PricingModal'
 
+export type AppView = 'market-map' | 'trends'
+
 interface ProductHeaderProps {
   onUploadClick: () => void
+  currentView: AppView
+  onViewChange: (v: AppView) => void
 }
 
-export function ProductHeader({ onUploadClick }: ProductHeaderProps) {
+export function ProductHeader({ onUploadClick, currentView, onViewChange }: ProductHeaderProps) {
   const [avatarOpen, setAvatarOpen] = useState(false)
   const [exportOpen, setExportOpen] = useState(false)
   const [displayOpen, setDisplayOpen] = useState(false)
@@ -24,6 +28,11 @@ export function ProductHeader({ onUploadClick }: ProductHeaderProps) {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  const handleViewSelect = (v: AppView) => {
+    onViewChange(v)
+    setDisplayOpen(false)
+  }
 
   return (
     <header className="product-header">
@@ -51,11 +60,12 @@ export function ProductHeader({ onUploadClick }: ProductHeaderProps) {
           </button>
           {displayOpen && (
             <div className="dropdown-menu">
-              <label><input type="checkbox" defaultChecked /> Hulls</label>
-              <label><input type="checkbox" defaultChecked /> Grid</label>
-              <label><input type="checkbox" defaultChecked /> Cluster labels</label>
-              <label><input type="checkbox" defaultChecked /> Unclustered startups</label>
-              <label><input type="checkbox" /> Funding color mode</label>
+              <button type="button" className={currentView === 'market-map' ? 'active' : ''} onClick={() => handleViewSelect('market-map')}>
+                Market Map
+              </button>
+              <button type="button" className={currentView === 'trends' ? 'active' : ''} onClick={() => handleViewSelect('trends')}>
+                Trends
+              </button>
             </div>
           )}
         </div>
